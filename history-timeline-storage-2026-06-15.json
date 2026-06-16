@@ -1,0 +1,3673 @@
+{
+  "format": "history-timeline-storage",
+  "version": 1,
+  "exportedAt": "2026-06-15T14:13:03.944Z",
+  "storageKey": "historyTimeline:data:v1",
+  "data": {
+    "groups": [
+      {
+        "id": "wars",
+        "content": "Войны"
+      },
+      {
+        "id": "states",
+        "content": "Государства"
+      },
+      {
+        "id": "people",
+        "content": "Люди"
+      },
+      {
+        "id": "events",
+        "content": "События"
+      },
+      {
+        "id": "culture",
+        "content": "culture"
+      },
+      {
+        "id": "disasters",
+        "content": "disasters"
+      },
+      {
+        "id": "economics",
+        "content": "economics"
+      },
+      {
+        "id": "literature",
+        "content": "literature"
+      },
+      {
+        "id": "science",
+        "content": "science"
+      }
+    ],
+    "items": [
+      {
+        "id": "khmelnytsky",
+        "group": "people",
+        "content": "Богдан Хмельницкий",
+        "start": "1595-12-27",
+        "end": "1657-08-06",
+        "type": "range",
+        "tags": [
+          "казачество",
+          "украина"
+        ],
+        "description": "Гетман Войска Запорожского.",
+        "related": [
+          "khmelnytsky-uprising",
+          "mazepa",
+          "sich-liquidation"
+        ]
+      },
+      {
+        "id": "mazepa",
+        "group": "people",
+        "content": "Иван Мазепа",
+        "start": "1639-03-20",
+        "end": "1709-09-22",
+        "type": "range",
+        "tags": [
+          "казачество",
+          "украина"
+        ],
+        "description": "Гетман Войска Запорожского.",
+        "related": [
+          "charles-xii",
+          "khmelnytsky",
+          "khmelnytsky-uprising",
+          "north-war",
+          "poltava",
+          "sich-liquidation"
+        ]
+      },
+      {
+        "id": "pugachev",
+        "group": "people",
+        "content": "Емельян Пугачёв",
+        "start": "1742",
+        "end": "1775-01-21",
+        "type": "range",
+        "tags": [
+          "восстание",
+          "россия"
+        ],
+        "description": "Предводитель крупнейшего восстания XVIII века.",
+        "related": [
+          "pugachev-rebellion"
+        ]
+      },
+      {
+        "id": "lermontov",
+        "group": "literature",
+        "content": "Михаил Лермонтов",
+        "start": "1814-10-15",
+        "end": "1841-07-27",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "кавказ"
+        ],
+        "description": "Русский поэт, прозаик и офицер.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "caucasian-war",
+          "esenin",
+          "franko",
+          "lesya-ukrainka",
+          "pushkin"
+        ]
+      },
+      {
+        "id": "north-war",
+        "group": "wars",
+        "content": "Северная война",
+        "start": "1700",
+        "end": "1721-09-10",
+        "type": "range",
+        "tags": [
+          "россия",
+          "швеция"
+        ],
+        "description": "Война России и её союзников против Швеции.",
+        "related": [
+          "charles-xii",
+          "mazepa"
+        ]
+      },
+      {
+        "id": "russo-turkish-1768",
+        "group": "wars",
+        "content": "Русско-турецкая война",
+        "start": "1768",
+        "end": "1774-07-21",
+        "type": "range",
+        "tags": [
+          "россия",
+          "турция"
+        ],
+        "description": "Война, после которой влияние России на юге резко возросло.",
+        "related": []
+      },
+      {
+        "id": "crimean-war",
+        "group": "wars",
+        "content": "Крымская война",
+        "start": "1853-10-16",
+        "end": "1856-03-30",
+        "type": "range",
+        "tags": [
+          "российская империя",
+          "война",
+          "крым"
+        ],
+        "description": "Война Российской империи против коалиции Османской империи, Великобритании, Франции и Сардинии. Завершилась Парижским миром.",
+        "related": [
+          "nicholas-i",
+          "alexander-ii",
+          "sevastopol-siege",
+          "paris-treaty-1856",
+          "sardinia"
+        ]
+      },
+      {
+        "id": "caucasian-war",
+        "group": "wars",
+        "content": "Кавказская война",
+        "start": "1817",
+        "end": "1864-05-21",
+        "type": "range",
+        "tags": [
+          "кавказ",
+          "россия"
+        ],
+        "description": "Длительная война на Кавказе.",
+        "related": [
+          "lermontov"
+        ]
+      },
+      {
+        "id": "khmelnytsky-uprising",
+        "group": "events",
+        "content": "Восстание Хмельницкого",
+        "start": "1648",
+        "end": "1657-08-06",
+        "type": "range",
+        "tags": [
+          "казачество",
+          "украина",
+          "польша"
+        ],
+        "description": "Казацкое восстание против Речи Посполитой.",
+        "related": [
+          "khmelnytsky",
+          "mazepa",
+          "rzeczpospolita",
+          "sich-liquidation"
+        ]
+      },
+      {
+        "id": "pereyaslav",
+        "group": "events",
+        "content": "Переяславская рада",
+        "start": "1654-01-18",
+        "type": "point",
+        "tags": [
+          "украина",
+          "россия"
+        ],
+        "description": "Принятие решения о переходе под власть русского царя.",
+        "related": [
+          "gogol",
+          "vernadsky"
+        ]
+      },
+      {
+        "id": "ruina",
+        "group": "events",
+        "content": "Руина",
+        "start": "1657",
+        "end": "1687",
+        "type": "range",
+        "tags": [
+          "украина"
+        ],
+        "description": "Период междоусобиц и политической нестабильности.",
+        "related": []
+      },
+      {
+        "id": "andrusovo",
+        "group": "events",
+        "content": "Андрусовское перемирие",
+        "start": "1667-01-30",
+        "type": "point",
+        "tags": [
+          "россия",
+          "польша"
+        ],
+        "description": "Раздел украинских земель по Днепру.",
+        "related": [
+          "eternal-peace"
+        ]
+      },
+      {
+        "id": "eternal-peace",
+        "group": "events",
+        "content": "Вечный мир",
+        "start": "1686-05-06",
+        "type": "point",
+        "tags": [
+          "россия",
+          "польша"
+        ],
+        "description": "Подтверждение условий Андрусовского перемирия.",
+        "related": [
+          "andrusovo"
+        ]
+      },
+      {
+        "id": "poltava",
+        "group": "events",
+        "content": "Полтавская битва",
+        "start": "1709-06-27",
+        "type": "point",
+        "tags": [
+          "война",
+          "украина"
+        ],
+        "description": "Ключевое сражение Северной войны.",
+        "related": [
+          "charles-xii",
+          "mazepa"
+        ]
+      },
+      {
+        "id": "russian-empire",
+        "group": "events",
+        "content": "Провозглашение Российской империи",
+        "start": "1721-11-02",
+        "type": "point",
+        "tags": [
+          "россия"
+        ],
+        "description": "Россия становится империей.",
+        "related": []
+      },
+      {
+        "id": "pugachev-rebellion",
+        "group": "events",
+        "content": "Восстание Пугачёва",
+        "start": "1773-09-17",
+        "end": "1775-01-21",
+        "type": "range",
+        "tags": [
+          "россия",
+          "восстание"
+        ],
+        "description": "Крупнейшее крестьянское восстание XVIII века.",
+        "related": [
+          "pugachev"
+        ]
+      },
+      {
+        "id": "sich-liquidation",
+        "group": "events",
+        "content": "Ликвидация Запорожской Сечи",
+        "start": "1775-06-15",
+        "type": "point",
+        "tags": [
+          "казачество",
+          "украина"
+        ],
+        "description": "Упразднение Запорожской Сечи.",
+        "related": [
+          "khmelnytsky",
+          "khmelnytsky-uprising",
+          "mazepa"
+        ]
+      },
+      {
+        "id": "crimea-annexation",
+        "group": "events",
+        "content": "Присоединение Крыма к России",
+        "start": "1783-04-19",
+        "type": "point",
+        "tags": [
+          "крым",
+          "екатерина-ii"
+        ],
+        "description": "Ликвидация независимого Крымского ханства и включение Крыма в состав Российской империи.",
+        "related": [
+          "catherine-ii",
+          "potemkin",
+          "crimean-khanate"
+        ]
+      },
+      {
+        "id": "constitution-1791",
+        "group": "events",
+        "content": "Конституция 3 мая",
+        "start": "1791-05-03",
+        "type": "point",
+        "tags": [
+          "польша"
+        ],
+        "description": "Реформа государственного устройства Речи Посполитой.",
+        "related": []
+      },
+      {
+        "id": "first-partition",
+        "group": "events",
+        "content": "Первый раздел Речи Посполитой",
+        "start": "1772-08-05",
+        "type": "point",
+        "tags": [
+          "польша"
+        ],
+        "description": "Первый раздел Польши.",
+        "related": [
+          "rzeczpospolita"
+        ]
+      },
+      {
+        "id": "second-partition",
+        "group": "events",
+        "content": "Второй раздел Речи Посполитой",
+        "start": "1793-01-23",
+        "type": "point",
+        "tags": [
+          "польша"
+        ],
+        "description": "Россия получает большую часть Правобережья.",
+        "related": [
+          "rzeczpospolita"
+        ]
+      },
+      {
+        "id": "third-partition",
+        "group": "events",
+        "content": "Третий раздел Речи Посполитой",
+        "start": "1795-10-24",
+        "type": "point",
+        "tags": [
+          "польша"
+        ],
+        "description": "Исчезновение Речи Посполитой.",
+        "related": [
+          "rzeczpospolita"
+        ]
+      },
+      {
+        "id": "abolition-serfdom",
+        "group": "events",
+        "content": "Отмена крепостного права",
+        "start": "1861-03-03",
+        "type": "point",
+        "tags": [
+          "россия",
+          "реформы"
+        ],
+        "description": "Крестьянская реформа Александра II.",
+        "related": [
+          "shevchenko",
+          "turgenev"
+        ]
+      },
+      {
+        "id": "pushkin",
+        "group": "literature",
+        "content": "Александр Пушкин",
+        "start": "1799-06-06",
+        "end": "1837-02-10",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "россия"
+        ],
+        "description": "Русский поэт, драматург и прозаик.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "chekhov",
+          "dostoevsky",
+          "esenin",
+          "franko",
+          "lermontov"
+        ]
+      },
+      {
+        "id": "gogol",
+        "group": "literature",
+        "content": "Николай Гоголь",
+        "start": "1809-04-01",
+        "end": "1852-03-04",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "украина",
+          "россия"
+        ],
+        "description": "Писатель, автор «Мёртвых душ» и «Ревизора».",
+        "related": [
+          "dostoevsky",
+          "franko",
+          "gorky",
+          "kuprin",
+          "oles-gonchar",
+          "tolstoy",
+          "turgenev"
+        ]
+      },
+      {
+        "id": "shevchenko",
+        "group": "literature",
+        "content": "Тарас Шевченко",
+        "start": "1814-03-09",
+        "end": "1861-03-10",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "украина"
+        ],
+        "description": "Украинский поэт, художник и общественный деятель.",
+        "related": [
+          "abolition-serfdom",
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "esenin",
+          "franko",
+          "lesya-ukrainka",
+          "vasyl-stus"
+        ]
+      },
+      {
+        "id": "turgenev",
+        "group": "literature",
+        "content": "Иван Тургенев",
+        "start": "1818-11-09",
+        "end": "1883-09-03",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "россия"
+        ],
+        "description": "Русский писатель, автор романа «Отцы и дети».",
+        "related": [
+          "abolition-serfdom",
+          "astafyev",
+          "dostoevsky",
+          "gogol",
+          "gorky",
+          "kuprin",
+          "tolstoy"
+        ]
+      },
+      {
+        "id": "dostoevsky",
+        "group": "literature",
+        "content": "Фёдор Достоевский",
+        "start": "1821-11-11",
+        "end": "1881-02-09",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "россия"
+        ],
+        "description": "Русский писатель, автор романов «Преступление и наказание» и «Братья Карамазовы».",
+        "related": [
+          "astafyev",
+          "babel",
+          "gogol",
+          "gorky",
+          "kuprin",
+          "tolstoy",
+          "turgenev"
+        ]
+      },
+      {
+        "id": "tolstoy",
+        "group": "literature",
+        "content": "Лев Толстой",
+        "start": "1828-09-09",
+        "end": "1910-11-20",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "россия"
+        ],
+        "description": "Русский писатель, автор «Войны и мира» и «Анны Карениной».",
+        "related": [
+          "astafyev",
+          "crimean-war",
+          "dostoevsky",
+          "gogol",
+          "gorky",
+          "kuprin",
+          "turgenev"
+        ]
+      },
+      {
+        "id": "lesya-ukrainka",
+        "group": "literature",
+        "content": "Леся Украинка",
+        "start": "1871-02-25",
+        "end": "1913-08-01",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "украина"
+        ],
+        "description": "Украинская поэтесса и драматург.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "esenin",
+          "franko",
+          "gogol",
+          "shevchenko",
+          "vasyl-stus"
+        ]
+      },
+      {
+        "id": "franko",
+        "group": "literature",
+        "content": "Иван Франко",
+        "start": "1856-08-27",
+        "end": "1916-05-28",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "поэзия",
+          "украина"
+        ],
+        "description": "Украинский писатель, поэт и общественный деятель.",
+        "related": [
+          "akhmatova",
+          "astafyev",
+          "gogol",
+          "lesya-ukrainka",
+          "oles-gonchar",
+          "pasternak",
+          "shevchenko",
+          "vasyl-stus"
+        ]
+      },
+      {
+        "id": "chekhov",
+        "group": "literature",
+        "content": "Антон Чехов",
+        "start": "1860-01-29",
+        "end": "1904-07-15",
+        "type": "range",
+        "tags": [
+          "литература",
+          "драматургия",
+          "россия"
+        ],
+        "description": "Русский писатель и драматург.",
+        "related": [
+          "dostoevsky",
+          "esenin",
+          "gogol",
+          "gorky",
+          "kuprin",
+          "pushkin",
+          "tolstoy"
+        ]
+      },
+      {
+        "id": "gorky",
+        "group": "literature",
+        "content": "Максим Горький",
+        "start": "1868-03-28",
+        "end": "1936-06-18",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "россия"
+        ],
+        "description": "Русский и советский писатель.",
+        "related": [
+          "astafyev",
+          "babel",
+          "dostoevsky",
+          "gogol",
+          "kuprin",
+          "tolstoy",
+          "turgenev"
+        ]
+      },
+      {
+        "id": "bulgakov",
+        "group": "literature",
+        "content": "Михаил Булгаков",
+        "start": "1891-05-15",
+        "end": "1940-03-10",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "киев"
+        ],
+        "description": "Писатель и драматург, автор романа «Мастер и Маргарита».",
+        "related": [
+          "astafyev",
+          "babel",
+          "bunin",
+          "dostoevsky",
+          "franko",
+          "gogol",
+          "gorky"
+        ]
+      },
+      {
+        "id": "mayakovsky",
+        "group": "literature",
+        "content": "Владимир Маяковский",
+        "start": "1893-07-19",
+        "end": "1930-04-14",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "ссср"
+        ],
+        "description": "Советский поэт-футурист.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "esenin",
+          "mandelstam",
+          "pasternak",
+          "tvardovsky"
+        ]
+      },
+      {
+        "id": "esenin",
+        "group": "literature",
+        "content": "Сергей Есенин",
+        "start": "1895-10-03",
+        "end": "1925-12-28",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "россия"
+        ],
+        "description": "Русский поэт Серебряного века.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "chekhov",
+          "dostoevsky",
+          "franko",
+          "gogol",
+          "pushkin"
+        ]
+      },
+      {
+        "id": "sholokhov",
+        "group": "literature",
+        "content": "Михаил Шолохов",
+        "start": "1905-05-24",
+        "end": "1984-02-21",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "казачество"
+        ],
+        "description": "Советский писатель, автор «Тихого Дона».",
+        "related": [
+          "astafyev",
+          "babel",
+          "bulgakov",
+          "bunin",
+          "dostoevsky",
+          "franko",
+          "gogol"
+        ]
+      },
+      {
+        "id": "solzhenitsyn",
+        "group": "literature",
+        "content": "Александр Солженицын",
+        "start": "1918-12-11",
+        "end": "2008-08-03",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "ссср"
+        ],
+        "description": "Писатель, лауреат Нобелевской премии.",
+        "related": [
+          "akhmatova",
+          "astafyev",
+          "babel",
+          "bulgakov",
+          "pasternak"
+        ]
+      },
+      {
+        "id": "strugatsky-brothers",
+        "group": "literature",
+        "content": "Братья Стругацкие",
+        "start": "1925-08-28",
+        "end": "2012-11-19",
+        "type": "range",
+        "tags": [
+          "литература",
+          "фантастика",
+          "ссср"
+        ],
+        "description": "Аркадий и Борис Стругацкие, классики советской фантастики.",
+        "related": [
+          "akhmatova",
+          "ilf-petrov",
+          "mandelstam",
+          "mayakovsky",
+          "pasternak"
+        ]
+      },
+      {
+        "id": "bunin",
+        "group": "literature",
+        "content": "Иван Бунин",
+        "start": "1870-10-22",
+        "end": "1953-11-08",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "эмиграция"
+        ],
+        "description": "Русский писатель, первый русский лауреат Нобелевской премии по литературе.",
+        "related": [
+          "astafyev",
+          "babel",
+          "brodsky",
+          "bulgakov",
+          "dostoevsky",
+          "franko",
+          "gogol"
+        ]
+      },
+      {
+        "id": "kuprin",
+        "group": "literature",
+        "content": "Александр Куприн",
+        "start": "1870-09-07",
+        "end": "1938-08-25",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "россия"
+        ],
+        "description": "Русский писатель, автор «Поединка» и «Гранатового браслета».",
+        "related": [
+          "astafyev",
+          "babel",
+          "dostoevsky",
+          "gogol",
+          "gorky",
+          "tolstoy",
+          "turgenev"
+        ]
+      },
+      {
+        "id": "blok",
+        "group": "literature",
+        "content": "Александр Блок",
+        "start": "1880-11-28",
+        "end": "1921-08-07",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "серебряный век"
+        ],
+        "description": "Один из крупнейших русских поэтов Серебряного века.",
+        "related": [
+          "akhmatova",
+          "brodsky",
+          "esenin",
+          "franko",
+          "lermontov",
+          "lesya-ukrainka",
+          "mandelstam",
+          "mayakovsky"
+        ]
+      },
+      {
+        "id": "akhmatova",
+        "group": "literature",
+        "content": "Анна Ахматова",
+        "start": "1889-06-23",
+        "end": "1966-03-05",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "ссср"
+        ],
+        "description": "Русская и советская поэтесса.",
+        "related": [
+          "blok",
+          "brodsky",
+          "esenin",
+          "mandelstam",
+          "mayakovsky",
+          "pasternak",
+          "tvardovsky"
+        ]
+      },
+      {
+        "id": "tsvetaeva",
+        "group": "literature",
+        "content": "Марина Цветаева",
+        "start": "1892-10-08",
+        "end": "1941-08-31",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "эмиграция"
+        ],
+        "description": "Русская поэтесса Серебряного века.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "bunin",
+          "esenin",
+          "franko",
+          "lermontov",
+          "lesya-ukrainka"
+        ]
+      },
+      {
+        "id": "mandelstam",
+        "group": "literature",
+        "content": "Осип Мандельштам",
+        "start": "1891-01-15",
+        "end": "1938-12-27",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "ссср"
+        ],
+        "description": "Русский поэт и эссеист.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "esenin",
+          "mayakovsky",
+          "pasternak",
+          "tvardovsky"
+        ]
+      },
+      {
+        "id": "pasternak",
+        "group": "literature",
+        "content": "Борис Пастернак",
+        "start": "1890-02-10",
+        "end": "1960-05-30",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "проза",
+          "ссср"
+        ],
+        "description": "Писатель и поэт, автор романа «Доктор Живаго».",
+        "related": [
+          "akhmatova",
+          "franko",
+          "mandelstam",
+          "mayakovsky",
+          "solzhenitsyn"
+        ]
+      },
+      {
+        "id": "ilf-petrov",
+        "group": "literature",
+        "content": "Ильф и Петров",
+        "start": "1897-10-15",
+        "end": "1942-07-02",
+        "type": "range",
+        "tags": [
+          "литература",
+          "сатира",
+          "ссср"
+        ],
+        "description": "Советские писатели, авторы «Двенадцати стульев» и «Золотого телёнка».",
+        "related": [
+          "akhmatova",
+          "mandelstam",
+          "mayakovsky",
+          "pasternak",
+          "solzhenitsyn"
+        ]
+      },
+      {
+        "id": "babel",
+        "group": "literature",
+        "content": "Исаак Бабель",
+        "start": "1894-07-13",
+        "end": "1940-01-27",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "одесса"
+        ],
+        "description": "Писатель, автор «Конармии» и «Одесских рассказов».",
+        "related": [
+          "astafyev",
+          "bulgakov",
+          "bunin",
+          "dostoevsky",
+          "franko",
+          "gogol",
+          "gorky"
+        ]
+      },
+      {
+        "id": "tvardovsky",
+        "group": "literature",
+        "content": "Александр Твардовский",
+        "start": "1910-06-21",
+        "end": "1971-12-18",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "ссср"
+        ],
+        "description": "Советский поэт, автор «Василия Тёркина».",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "esenin",
+          "mandelstam",
+          "mayakovsky",
+          "pasternak"
+        ]
+      },
+      {
+        "id": "dovzhenko",
+        "group": "culture",
+        "content": "Александр Довженко",
+        "start": "1894-09-10",
+        "end": "1956-11-25",
+        "type": "range",
+        "tags": [
+          "кино",
+          "украина"
+        ],
+        "description": "Кинорежиссёр и писатель.",
+        "related": []
+      },
+      {
+        "id": "oles-gonchar",
+        "group": "literature",
+        "content": "Олесь Гончар",
+        "start": "1918-04-03",
+        "end": "1995-07-14",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "украина"
+        ],
+        "description": "Украинский советский писатель.",
+        "related": [
+          "astafyev",
+          "babel",
+          "bulgakov",
+          "bunin",
+          "dostoevsky",
+          "franko",
+          "gogol"
+        ]
+      },
+      {
+        "id": "vasyl-stus",
+        "group": "literature",
+        "content": "Василь Стус",
+        "start": "1938-01-06",
+        "end": "1985-09-04",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "украина"
+        ],
+        "description": "Украинский поэт и диссидент.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "brodsky",
+          "esenin",
+          "franko",
+          "gogol",
+          "lesya-ukrainka",
+          "shevchenko"
+        ]
+      },
+      {
+        "id": "astafyev",
+        "group": "literature",
+        "content": "Виктор Астафьев",
+        "start": "1924-05-01",
+        "end": "2001-11-29",
+        "type": "range",
+        "tags": [
+          "литература",
+          "проза",
+          "война"
+        ],
+        "description": "Русский и советский писатель-фронтовик.",
+        "related": [
+          "babel",
+          "bulgakov",
+          "bunin",
+          "dostoevsky",
+          "franko",
+          "gogol",
+          "gorky"
+        ]
+      },
+      {
+        "id": "brodsky",
+        "group": "literature",
+        "content": "Иосиф Бродский",
+        "start": "1940-05-24",
+        "end": "1996-01-28",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "эмиграция"
+        ],
+        "description": "Поэт, лауреат Нобелевской премии.",
+        "related": [
+          "akhmatova",
+          "blok",
+          "bunin",
+          "esenin",
+          "franko",
+          "lermontov",
+          "lesya-ukrainka",
+          "tsvetaeva"
+        ]
+      },
+      {
+        "id": "fall-byzantium",
+        "group": "events",
+        "content": "Падение Византии",
+        "start": "1453-05-29",
+        "type": "point",
+        "tags": [
+          "византия",
+          "турция",
+          "константинополь"
+        ],
+        "description": "Захват Константинополя османами и прекращение существования Византийской империи.",
+        "related": []
+      },
+      {
+        "id": "great-stand-ugra",
+        "group": "events",
+        "content": "Стояние на Угре",
+        "start": "1480-10-08",
+        "type": "point",
+        "tags": [
+          "русь",
+          "орда"
+        ],
+        "description": "Окончание ордынской зависимости Руси. Часто рассматривается как завершение процесса, начатого на Куликовом поле.",
+        "related": [
+          "ivan-iii",
+          "kulikovo-battle"
+        ]
+      },
+      {
+        "id": "rzeczpospolita",
+        "group": "states",
+        "content": "Речь Посполитая",
+        "start": "1569-07-01",
+        "end": "1795-10-24",
+        "type": "range",
+        "tags": [
+          "польша",
+          "литва"
+        ],
+        "description": "Федеративное государство Польши и Великого княжества Литовского.",
+        "related": [
+          "first-partition",
+          "khmelnytsky-uprising",
+          "second-partition",
+          "third-partition"
+        ]
+      },
+      {
+        "id": "false-dmitry-1",
+        "group": "people",
+        "content": "Лжедмитрий I",
+        "start": "1581-01-01",
+        "end": "1606-05-27",
+        "type": "range",
+        "tags": [
+          "смута",
+          "москва"
+        ],
+        "description": "Самозванец, выдававший себя за царевича Дмитрия Ивановича.",
+        "related": [
+          "false-dmitry-2",
+          "liberation-moscow",
+          "minin",
+          "pozharsky",
+          "time-of-troubles"
+        ]
+      },
+      {
+        "id": "false-dmitry-2",
+        "group": "people",
+        "content": "Лжедмитрий II",
+        "start": "1607-01-01",
+        "end": "1610-12-21",
+        "type": "range",
+        "tags": [
+          "смута",
+          "москва"
+        ],
+        "description": "Самозванец периода Смутного времени, известный как Тушинский вор.",
+        "related": [
+          "false-dmitry-1",
+          "liberation-moscow",
+          "minin",
+          "pozharsky",
+          "time-of-troubles"
+        ]
+      },
+      {
+        "id": "time-of-troubles",
+        "group": "events",
+        "content": "Смутное время",
+        "start": "1598-01-01",
+        "end": "1613-02-21",
+        "type": "range",
+        "tags": [
+          "москва",
+          "смута"
+        ],
+        "description": "Период династического кризиса, интервенций и гражданских конфликтов.",
+        "related": [
+          "false-dmitry-1",
+          "false-dmitry-2",
+          "liberation-moscow",
+          "minin",
+          "pozharsky"
+        ]
+      },
+      {
+        "id": "minin",
+        "group": "people",
+        "content": "Кузьма Минин",
+        "start": "1570-01-01",
+        "end": "1616-05-21",
+        "type": "range",
+        "tags": [
+          "смута",
+          "москва"
+        ],
+        "description": "Организатор Второго народного ополчения.",
+        "related": [
+          "false-dmitry-1",
+          "false-dmitry-2",
+          "liberation-moscow",
+          "pozharsky",
+          "time-of-troubles"
+        ]
+      },
+      {
+        "id": "pozharsky",
+        "group": "people",
+        "content": "Дмитрий Пожарский",
+        "start": "1577-11-01",
+        "end": "1642-04-30",
+        "type": "range",
+        "tags": [
+          "смута",
+          "москва"
+        ],
+        "description": "Князь, руководитель Второго народного ополчения.",
+        "related": [
+          "false-dmitry-1",
+          "false-dmitry-2",
+          "liberation-moscow",
+          "minin",
+          "time-of-troubles"
+        ]
+      },
+      {
+        "id": "liberation-moscow",
+        "group": "events",
+        "content": "Освобождение Москвы",
+        "start": "1612-11-04",
+        "type": "point",
+        "tags": [
+          "смута",
+          "москва"
+        ],
+        "description": "Ополчение Минина и Пожарского освободило Москву от польского гарнизона.",
+        "related": [
+          "false-dmitry-1",
+          "false-dmitry-2",
+          "minin",
+          "pozharsky",
+          "time-of-troubles"
+        ]
+      },
+      {
+        "id": "romanov-dynasty",
+        "group": "events",
+        "content": "Начало династии Романовых",
+        "start": "1613-02-21",
+        "type": "point",
+        "tags": [
+          "москва",
+          "романовы"
+        ],
+        "description": "Избрание Михаила Фёдоровича Романова на царство.",
+        "related": []
+      },
+      {
+        "id": "charles-xii",
+        "group": "people",
+        "content": "Карл XII",
+        "start": "1682-06-17",
+        "end": "1718-11-30",
+        "type": "range",
+        "tags": [
+          "швеция",
+          "северная война"
+        ],
+        "description": "Король Швеции, один из крупнейших полководцев своего времени.",
+        "related": [
+          "mazepa",
+          "north-war",
+          "poltava"
+        ]
+      },
+      {
+        "id": "lenin",
+        "group": "people",
+        "content": "Владимир Ленин",
+        "start": "1870-04-22",
+        "end": "1924-01-21",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "революция"
+        ],
+        "description": "Основатель советского государства.",
+        "related": [
+          "october-revolution",
+          "civil-war-russia",
+          "ussr-founded"
+        ]
+      },
+      {
+        "id": "stalin",
+        "group": "people",
+        "content": "Иосиф Сталин",
+        "start": "1878-12-18",
+        "end": "1953-03-05",
+        "type": "range",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Руководитель СССР.",
+        "related": [
+          "ww2",
+          "great-purge",
+          "cold-war"
+        ]
+      },
+      {
+        "id": "trotsky",
+        "group": "people",
+        "content": "Лев Троцкий",
+        "start": "1879-11-07",
+        "end": "1940-08-21",
+        "type": "range",
+        "tags": [
+          "революция",
+          "ссср",
+          "украина"
+        ],
+        "description": "Один из лидеров Октябрьской революции и создателей Красной армии.",
+        "related": [
+          "chernobyl",
+          "civil-war",
+          "crimea-transfer",
+          "glushkov",
+          "holodomor",
+          "korolev",
+          "lenin",
+          "october-revolution"
+        ]
+      },
+      {
+        "id": "petliura",
+        "group": "people",
+        "content": "Симон Петлюра",
+        "start": "1879-05-22",
+        "end": "1926-05-25",
+        "type": "range",
+        "tags": [
+          "украина",
+          "унр"
+        ],
+        "description": "Глава Директории Украинской Народной Республики.",
+        "related": [
+          "hrushevsky",
+          "ukrainian-revolution"
+        ]
+      },
+      {
+        "id": "skoropadsky",
+        "group": "people",
+        "content": "Павел Скоропадский",
+        "start": "1873-05-15",
+        "end": "1945-04-26",
+        "type": "range",
+        "tags": [
+          "украина",
+          "гетманат"
+        ],
+        "description": "Гетман Украинской Державы в 1918 году.",
+        "related": [
+          "ukrainian-revolution"
+        ]
+      },
+      {
+        "id": "makhno",
+        "group": "people",
+        "content": "Нестор Махно",
+        "start": "1888-10-27",
+        "end": "1934-07-25",
+        "type": "range",
+        "tags": [
+          "украина",
+          "анархизм"
+        ],
+        "description": "Лидер революционного повстанческого движения на юге Украины.",
+        "related": [
+          "civil-war"
+        ]
+      },
+      {
+        "id": "hrushevsky",
+        "group": "people",
+        "content": "Михаил Грушевский",
+        "start": "1866-09-29",
+        "end": "1934-11-24",
+        "type": "range",
+        "tags": [
+          "украина",
+          "история",
+          "унр"
+        ],
+        "description": "Историк и председатель Центральной Рады.",
+        "related": [
+          "petliura",
+          "ukrainian-revolution"
+        ]
+      },
+      {
+        "id": "bandera",
+        "group": "people",
+        "content": "Степан Бандера",
+        "start": "1909-01-01",
+        "end": "1959-10-15",
+        "type": "range",
+        "tags": [
+          "украина",
+          "оун"
+        ],
+        "description": "Один из лидеров украинского националистического движения.",
+        "related": [
+          "ww2"
+        ]
+      },
+      {
+        "id": "khrushchev",
+        "group": "people",
+        "content": "Никита Хрущёв",
+        "start": "1894-04-15",
+        "end": "1971-09-11",
+        "type": "range",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Период оттепели.",
+        "related": [
+          "cuban-missile-crisis",
+          "gagarin-flight"
+        ]
+      },
+      {
+        "id": "brezhnev",
+        "group": "people",
+        "content": "Леонид Брежнев",
+        "start": "1906-12-19",
+        "end": "1982-11-10",
+        "type": "range",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Эпоха развитого социализма.",
+        "related": [
+          "afghan-war"
+        ]
+      },
+      {
+        "id": "gorbachev",
+        "group": "people",
+        "content": "Михаил Горбачёв",
+        "start": "1931-03-02",
+        "end": "2022-08-30",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "перестройка"
+        ],
+        "description": "Последний руководитель СССР.",
+        "related": [
+          "perestroika",
+          "ussr-collapse"
+        ]
+      },
+      {
+        "id": "yeltsin",
+        "group": "people",
+        "content": "Борис Ельцин",
+        "start": "1931-02-01",
+        "end": "2007-04-23",
+        "type": "range",
+        "tags": [
+          "россия"
+        ],
+        "description": "Первый президент Российской Федерации.",
+        "related": [
+          "ussr-collapse",
+          "constitution-1993"
+        ]
+      },
+      {
+        "id": "kravchuk",
+        "group": "people",
+        "content": "Леонид Кравчук",
+        "start": "1934-01-10",
+        "end": "2022-05-10",
+        "type": "range",
+        "tags": [
+          "украина"
+        ],
+        "description": "Первый президент независимой Украины.",
+        "related": [
+          "ukraine-independence"
+        ]
+      },
+      {
+        "id": "kuchma",
+        "group": "people",
+        "content": "Леонид Кучма",
+        "start": "1938-08-09",
+        "end": "2030-01-01",
+        "type": "range",
+        "tags": [
+          "украина"
+        ],
+        "description": "Президент Украины в 1994–2005 годах.",
+        "related": []
+      },
+      {
+        "id": "chernovil",
+        "group": "people",
+        "content": "Вячеслав Черновол",
+        "start": "1937-12-24",
+        "end": "1999-03-25",
+        "type": "range",
+        "tags": [
+          "украина",
+          "диссиденты"
+        ],
+        "description": "Украинский политик и общественный деятель.",
+        "related": [
+          "ukraine-independence"
+        ]
+      },
+      {
+        "id": "sakharov",
+        "group": "people",
+        "content": "Андрей Сахаров",
+        "start": "1921-05-21",
+        "end": "1989-12-14",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "диссиденты"
+        ],
+        "description": "Физик и правозащитник.",
+        "related": [
+          "solzhenitsyn-politics"
+        ]
+      },
+      {
+        "id": "solzhenitsyn-politics",
+        "group": "people",
+        "content": "Александр Солженицын",
+        "start": "1918-12-11",
+        "end": "2008-08-03",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "диссиденты"
+        ],
+        "description": "Писатель и общественный деятель.",
+        "related": [
+          "sakharov"
+        ]
+      },
+      {
+        "id": "russian-revolution-1905",
+        "group": "events",
+        "content": "Революция 1905–1907 годов",
+        "start": "1905-01-22",
+        "end": "1907-06-16",
+        "type": "range",
+        "tags": [
+          "россия",
+          "революция"
+        ],
+        "description": "Первая русская революция.",
+        "related": [
+          "february-revolution",
+          "lenin"
+        ]
+      },
+      {
+        "id": "ww1",
+        "group": "wars",
+        "content": "Первая мировая война",
+        "start": "1914-07-28",
+        "end": "1918-11-11",
+        "type": "range",
+        "tags": [
+          "война",
+          "европа"
+        ],
+        "description": "Крупнейший мировой конфликт начала XX века.",
+        "related": []
+      },
+      {
+        "id": "february-revolution",
+        "group": "events",
+        "content": "Февральская революция",
+        "start": "1917-03-08",
+        "type": "point",
+        "tags": [
+          "россия",
+          "революция"
+        ],
+        "description": "Падение монархии в России.",
+        "related": [
+          "lenin",
+          "russian-revolution-1905"
+        ]
+      },
+      {
+        "id": "october-revolution",
+        "group": "events",
+        "content": "Октябрьская революция",
+        "start": "1917-11-07",
+        "type": "point",
+        "tags": [
+          "россия",
+          "большевики"
+        ],
+        "description": "Приход большевиков к власти.",
+        "related": [
+          "lenin",
+          "trotsky"
+        ]
+      },
+      {
+        "id": "ukrainian-revolution",
+        "group": "events",
+        "content": "Украинская революция",
+        "start": "1917-03-17",
+        "end": "1921-11-17",
+        "type": "range",
+        "tags": [
+          "украина",
+          "унр"
+        ],
+        "description": "Борьба за украинскую государственность.",
+        "related": [
+          "hrushevsky",
+          "petliura",
+          "skoropadsky"
+        ]
+      },
+      {
+        "id": "civil-war",
+        "group": "wars",
+        "content": "Гражданская война в России",
+        "start": "1917-11-07",
+        "end": "1922-10-25",
+        "type": "range",
+        "tags": [
+          "россия",
+          "гражданская война"
+        ],
+        "description": "Война между красными, белыми и другими силами.",
+        "related": [
+          "makhno",
+          "trotsky"
+        ]
+      },
+      {
+        "id": "ussr-founded",
+        "group": "events",
+        "content": "Образование СССР",
+        "start": "1922-12-30",
+        "type": "point",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Создание Союза Советских Социалистических Республик.",
+        "related": [
+          "lenin",
+          "stalin"
+        ]
+      },
+      {
+        "id": "collectivization",
+        "group": "events",
+        "content": "Коллективизация",
+        "start": "1929-01-01",
+        "end": "1937-01-01",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "сельское хозяйство"
+        ],
+        "description": "Создание колхозов и преобразование сельского хозяйства.",
+        "related": []
+      },
+      {
+        "id": "holodomor",
+        "group": "events",
+        "content": "Голод 1932–1933 годов",
+        "start": "1932-01-01",
+        "end": "1933-12-31",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "украина"
+        ],
+        "description": "Массовый голод в ряде регионов СССР.",
+        "related": [
+          "chernobyl",
+          "crimea-transfer",
+          "glushkov",
+          "korolev",
+          "trotsky"
+        ]
+      },
+      {
+        "id": "great-purge",
+        "group": "events",
+        "content": "Большой террор",
+        "start": "1936-01-01",
+        "end": "1938-12-31",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "репрессии"
+        ],
+        "description": "Период массовых политических репрессий.",
+        "related": []
+      },
+      {
+        "id": "molotov-ribbentrop",
+        "group": "events",
+        "content": "Пакт Молотова — Риббентропа",
+        "start": "1939-08-23",
+        "type": "point",
+        "tags": [
+          "ссср",
+          "германия"
+        ],
+        "description": "Договор о ненападении между СССР и Германией.",
+        "related": [
+          "great-patriotic-war"
+        ]
+      },
+      {
+        "id": "ww2",
+        "group": "wars",
+        "content": "Вторая мировая война",
+        "start": "1939-09-01",
+        "end": "1945-09-02",
+        "type": "range",
+        "tags": [
+          "война"
+        ],
+        "description": "Крупнейшая война в истории человечества.",
+        "related": [
+          "bandera",
+          "stalin"
+        ]
+      },
+      {
+        "id": "great-patriotic-war",
+        "group": "wars",
+        "content": "Великая Отечественная война",
+        "start": "1941-06-22",
+        "end": "1945-05-09",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "германия"
+        ],
+        "description": "Восточный фронт Второй мировой войны.",
+        "related": [
+          "molotov-ribbentrop"
+        ]
+      },
+      {
+        "id": "battle-stalingrad",
+        "group": "events",
+        "content": "Сталинградская битва",
+        "start": "1942-08-23",
+        "end": "1943-02-02",
+        "type": "range",
+        "tags": [
+          "война"
+        ],
+        "description": "Переломное сражение Второй мировой войны.",
+        "related": []
+      },
+      {
+        "id": "un-founded",
+        "group": "events",
+        "content": "Создание ООН",
+        "start": "1945-10-24",
+        "type": "point",
+        "tags": [
+          "международные отношения"
+        ],
+        "description": "Основание Организации Объединённых Наций.",
+        "related": []
+      },
+      {
+        "id": "cold-war",
+        "group": "events",
+        "content": "Холодная война",
+        "start": "1947-03-12",
+        "end": "1991-12-26",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "сша"
+        ],
+        "description": "Глобальное противостояние СССР и США.",
+        "related": [
+          "cuban-crisis"
+        ]
+      },
+      {
+        "id": "korean-war",
+        "group": "wars",
+        "content": "Корейская война",
+        "start": "1950-06-25",
+        "end": "1953-07-27",
+        "type": "range",
+        "tags": [
+          "корея",
+          "холодная война"
+        ],
+        "description": "Вооружённый конфликт на Корейском полуострове.",
+        "related": []
+      },
+      {
+        "id": "crimea-transfer",
+        "group": "events",
+        "content": "Передача Крыма УССР",
+        "start": "1954-02-19",
+        "type": "point",
+        "tags": [
+          "крым",
+          "украина",
+          "ссср"
+        ],
+        "description": "Передача Крымской области из РСФСР в УССР.",
+        "related": [
+          "chernobyl",
+          "glushkov",
+          "holodomor",
+          "khrushchev",
+          "korolev",
+          "trotsky"
+        ]
+      },
+      {
+        "id": "space-age",
+        "group": "events",
+        "content": "Запуск Спутника-1",
+        "start": "1957-10-04",
+        "type": "point",
+        "tags": [
+          "космос",
+          "ссср"
+        ],
+        "description": "Начало космической эры.",
+        "related": [
+          "gagarin",
+          "gagarin-flight",
+          "korolev",
+          "sputnik-1"
+        ]
+      },
+      {
+        "id": "gagarin-flight",
+        "group": "science",
+        "content": "Полёт Гагарина",
+        "start": "1961-04-12",
+        "type": "point",
+        "tags": [
+          "космос",
+          "ссср",
+          "технологии"
+        ],
+        "description": "Первый в истории полёт человека в космос. Юрий Гагарин совершил один виток вокруг Земли на корабле «Восток-1».",
+        "related": [
+          "gagarin",
+          "korolev",
+          "space-age",
+          "sputnik-1"
+        ]
+      },
+      {
+        "id": "cuban-crisis",
+        "group": "events",
+        "content": "Карибский кризис",
+        "start": "1962-10-16",
+        "end": "1962-10-28",
+        "type": "range",
+        "tags": [
+          "сша",
+          "ссср"
+        ],
+        "description": "Наиболее опасный кризис Холодной войны.",
+        "related": [
+          "cold-war"
+        ]
+      },
+      {
+        "id": "prague-spring",
+        "group": "events",
+        "content": "Пражская весна",
+        "start": "1968-01-05",
+        "end": "1968-08-21",
+        "type": "range",
+        "tags": [
+          "чехословакия",
+          "ссср"
+        ],
+        "description": "Попытка либерализации социалистической системы.",
+        "related": []
+      },
+      {
+        "id": "afghan-war",
+        "group": "wars",
+        "content": "Война в Афганистане",
+        "start": "1979-12-25",
+        "end": "1989-02-15",
+        "type": "range",
+        "tags": [
+          "ссср",
+          "афганистан"
+        ],
+        "description": "Военная кампания СССР в Афганистане.",
+        "related": []
+      },
+      {
+        "id": "chernobyl",
+        "group": "disasters",
+        "content": "Авария на ЧАЭС",
+        "start": "1986-04-26",
+        "type": "point",
+        "tags": [
+          "атом",
+          "украина",
+          "ссср"
+        ],
+        "description": "Крупнейшая авария в истории атомной энергетики.",
+        "related": [
+          "crimea-transfer",
+          "glushkov",
+          "holodomor",
+          "korolev",
+          "kurchatov",
+          "trotsky"
+        ]
+      },
+      {
+        "id": "perestroika",
+        "group": "events",
+        "content": "Перестройка",
+        "start": "1985-03-11",
+        "end": "1991-12-26",
+        "type": "range",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Период реформ Михаила Горбачёва.",
+        "related": []
+      },
+      {
+        "id": "ussr-collapse",
+        "group": "events",
+        "content": "Распад СССР",
+        "start": "1991-12-26",
+        "type": "point",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Прекращение существования Советского Союза.",
+        "related": [
+          "gorbachev",
+          "yeltsin"
+        ]
+      },
+      {
+        "id": "ukraine-independence",
+        "group": "events",
+        "content": "Независимость Украины",
+        "start": "1991-08-24",
+        "type": "point",
+        "tags": [
+          "украина"
+        ],
+        "description": "Провозглашение независимости Украины.",
+        "related": [
+          "chernovil",
+          "kravchuk"
+        ]
+      },
+      {
+        "id": "russian-constitution-1993",
+        "group": "events",
+        "content": "Конституция РФ",
+        "start": "1993-12-12",
+        "type": "point",
+        "tags": [
+          "россия"
+        ],
+        "description": "Принятие действующей Конституции Российской Федерации.",
+        "related": []
+      },
+      {
+        "id": "vernadsky",
+        "group": "science",
+        "content": "Владимир Вернадский",
+        "start": "1863-03-12",
+        "end": "1945-01-06",
+        "type": "range",
+        "tags": [
+          "наука",
+          "украина",
+          "россия"
+        ],
+        "description": "Учёный-естествоиспытатель, основатель геохимии и биогеохимии.",
+        "related": [
+          "gogol",
+          "pereyaslav"
+        ]
+      },
+      {
+        "id": "korolev",
+        "group": "science",
+        "content": "Сергей Королёв",
+        "start": "1907-01-12",
+        "end": "1966-01-14",
+        "type": "range",
+        "tags": [
+          "космос",
+          "ссср",
+          "украина"
+        ],
+        "description": "Главный конструктор советской космической программы.",
+        "related": [
+          "chernobyl",
+          "crimea-transfer",
+          "gagarin",
+          "gagarin-flight",
+          "glushkov",
+          "holodomor",
+          "space-age",
+          "sputnik-1"
+        ]
+      },
+      {
+        "id": "kurchatov",
+        "group": "science",
+        "content": "Игорь Курчатов",
+        "start": "1903-01-12",
+        "end": "1960-02-07",
+        "type": "range",
+        "tags": [
+          "атом",
+          "ссср"
+        ],
+        "description": "Руководитель советского атомного проекта.",
+        "related": [
+          "chernobyl"
+        ]
+      },
+      {
+        "id": "landau",
+        "group": "science",
+        "content": "Лев Ландау",
+        "start": "1908-01-22",
+        "end": "1968-04-01",
+        "type": "range",
+        "tags": [
+          "физика",
+          "ссср"
+        ],
+        "description": "Выдающийся советский физик, лауреат Нобелевской премии.",
+        "related": []
+      },
+      {
+        "id": "sakharov-scientist",
+        "group": "science",
+        "content": "Андрей Сахаров",
+        "start": "1921-05-21",
+        "end": "1989-12-14",
+        "type": "range",
+        "tags": [
+          "физика",
+          "атом",
+          "диссиденты"
+        ],
+        "description": "Физик, один из создателей советской водородной бомбы.",
+        "related": []
+      },
+      {
+        "id": "glushkov",
+        "group": "science",
+        "content": "Виктор Глушков",
+        "start": "1923-08-24",
+        "end": "1982-01-30",
+        "type": "range",
+        "tags": [
+          "кибернетика",
+          "украина",
+          "ссср"
+        ],
+        "description": "Один из основоположников советской вычислительной техники.",
+        "related": [
+          "chernobyl",
+          "crimea-transfer",
+          "holodomor",
+          "korolev",
+          "trotsky"
+        ]
+      },
+      {
+        "id": "vysotsky",
+        "group": "culture",
+        "content": "Владимир Высоцкий",
+        "start": "1938-01-25",
+        "end": "1980-07-25",
+        "type": "range",
+        "tags": [
+          "музыка",
+          "театр",
+          "ссср"
+        ],
+        "description": "Поэт, актёр и автор-исполнитель.",
+        "related": []
+      },
+      {
+        "id": "nep",
+        "group": "economics",
+        "content": "Новая экономическая политика",
+        "start": "1921-03-14",
+        "end": "1928-01-01",
+        "type": "range",
+        "tags": [
+          "экономика",
+          "ссср"
+        ],
+        "description": "Частичный возврат рыночных механизмов после Гражданской войны.",
+        "related": [
+          "industrialization"
+        ]
+      },
+      {
+        "id": "industrialization",
+        "group": "economics",
+        "content": "Индустриализация СССР",
+        "start": "1928-01-01",
+        "end": "1941-06-22",
+        "type": "range",
+        "tags": [
+          "экономика",
+          "ссср"
+        ],
+        "description": "Ускоренное развитие промышленности.",
+        "related": [
+          "nep"
+        ]
+      },
+      {
+        "id": "privatization",
+        "group": "economics",
+        "content": "Приватизация 1990-х",
+        "start": "1992-01-01",
+        "end": "1999-12-31",
+        "type": "range",
+        "tags": [
+          "экономика",
+          "россия"
+        ],
+        "description": "Передача значительной части государственной собственности в частные руки.",
+        "related": []
+      },
+      {
+        "id": "spitak-earthquake",
+        "group": "disasters",
+        "content": "Спитакское землетрясение",
+        "start": "1988-12-07",
+        "type": "point",
+        "tags": [
+          "армения",
+          "катастрофа"
+        ],
+        "description": "Одно из самых разрушительных землетрясений в истории СССР.",
+        "related": []
+      },
+      {
+        "id": "kursk-submarine",
+        "group": "disasters",
+        "content": "Гибель подлодки «Курск»",
+        "start": "2000-08-12",
+        "type": "point",
+        "tags": [
+          "флот",
+          "россия"
+        ],
+        "description": "Катастрофа атомной подводной лодки в Баренцевом море.",
+        "related": []
+      },
+      {
+        "id": "sputnik-1",
+        "group": "science",
+        "content": "Спутник-1",
+        "start": "1957-10-04",
+        "type": "point",
+        "tags": [
+          "космос",
+          "ссср",
+          "технологии"
+        ],
+        "description": "Запуск первого в мире искусственного спутника Земли. Начало космической эры.",
+        "related": [
+          "gagarin",
+          "gagarin-flight",
+          "korolev",
+          "space-age"
+        ]
+      },
+      {
+        "id": "gagarin",
+        "group": "people",
+        "content": "Юрий Гагарин",
+        "start": "1934-03-09",
+        "end": "1968-03-27",
+        "type": "range",
+        "tags": [
+          "космос",
+          "ссср"
+        ],
+        "description": "Первый человек, совершивший космический полёт.",
+        "related": [
+          "gagarin-flight",
+          "korolev",
+          "space-age",
+          "sputnik-1"
+        ]
+      },
+      {
+        "id": "vladimir-great",
+        "group": "people",
+        "content": "Владимир Святославич",
+        "start": "958-01-01",
+        "end": "1015-07-15",
+        "type": "range",
+        "tags": [
+          "русь",
+          "князь",
+          "крещение"
+        ],
+        "description": "Великий князь Киевский. Креститель Руси.",
+        "related": []
+      },
+      {
+        "id": "yaroslav-wise",
+        "group": "people",
+        "content": "Ярослав Мудрый",
+        "start": "978-01-01",
+        "end": "1054-02-20",
+        "type": "range",
+        "tags": [
+          "русь",
+          "князь"
+        ],
+        "description": "Великий князь Киевский.",
+        "related": [
+          "kyivan-rus"
+        ]
+      },
+      {
+        "id": "ivan-iii",
+        "group": "people",
+        "content": "Иван III",
+        "start": "1440-01-22",
+        "end": "1505-10-27",
+        "type": "range",
+        "tags": [
+          "москва",
+          "царь"
+        ],
+        "description": "Собиратель русских земель. Стояние на Угре.",
+        "related": [
+          "great-stand-ugra"
+        ]
+      },
+      {
+        "id": "ivan-iv",
+        "group": "people",
+        "content": "Иван IV Грозный",
+        "start": "1530-08-25",
+        "end": "1584-03-28",
+        "type": "range",
+        "tags": [
+          "царь",
+          "московия"
+        ],
+        "description": "Первый русский царь.",
+        "related": [
+          "livonian-war"
+        ]
+      },
+      {
+        "id": "mikhail-romanov",
+        "group": "people",
+        "content": "Михаил Романов",
+        "start": "1596-07-22",
+        "end": "1645-07-23",
+        "type": "range",
+        "tags": [
+          "романовы",
+          "царь"
+        ],
+        "description": "Первый царь династии Романовых.",
+        "related": [
+          "time-of-troubles"
+        ]
+      },
+      {
+        "id": "alexei-mikhailovich",
+        "group": "people",
+        "content": "Алексей Михайлович",
+        "start": "1629-03-29",
+        "end": "1676-01-29",
+        "type": "range",
+        "tags": [
+          "романовы",
+          "царь"
+        ],
+        "description": "Царь во время Переяславской рады.",
+        "related": [
+          "pereyaslav-rada",
+          "khmelnytsky-uprising"
+        ]
+      },
+      {
+        "id": "peter-i",
+        "group": "people",
+        "content": "Пётр I",
+        "start": "1672-06-09",
+        "end": "1725-02-08",
+        "type": "range",
+        "tags": [
+          "император",
+          "реформы"
+        ],
+        "description": "Первый император Российской империи.",
+        "related": [
+          "north-war",
+          "poltava",
+          "mazepa",
+          "charles-xii"
+        ]
+      },
+      {
+        "id": "catherine-ii",
+        "group": "people",
+        "content": "Екатерина II",
+        "start": "1729-05-02",
+        "end": "1796-11-17",
+        "type": "range",
+        "tags": [
+          "империя",
+          "императрица"
+        ],
+        "description": "Екатерина Великая.",
+        "related": [
+          "pugachev-revolt",
+          "partitions-poland",
+          "sich-liquidation"
+        ]
+      },
+      {
+        "id": "alexander-i",
+        "group": "people",
+        "content": "Александр I",
+        "start": "1777-12-23",
+        "end": "1825-12-01",
+        "type": "range",
+        "tags": [
+          "империя"
+        ],
+        "description": "Император эпохи Наполеоновских войн.",
+        "related": [
+          "patriotic-war-1812"
+        ]
+      },
+      {
+        "id": "nicholas-i",
+        "group": "people",
+        "content": "Николай I",
+        "start": "1796-07-06",
+        "end": "1855-03-02",
+        "type": "range",
+        "tags": [
+          "империя"
+        ],
+        "description": "Император",
+        "related": [
+          "crimean-war"
+        ]
+      },
+      {
+        "id": "alexander-ii",
+        "group": "people",
+        "content": "Александр II",
+        "start": "1818-04-29",
+        "end": "1881-03-13",
+        "type": "range",
+        "tags": [
+          "реформы",
+          "империя"
+        ],
+        "description": "Отменил крепостное право.",
+        "related": [
+          "serfdom-abolition"
+        ]
+      },
+      {
+        "id": "nicholas-ii",
+        "group": "people",
+        "content": "Николай II",
+        "start": "1868-05-18",
+        "end": "1918-07-17",
+        "type": "range",
+        "tags": [
+          "империя",
+          "революция"
+        ],
+        "description": "Последний российский император.",
+        "related": [
+          "ww1",
+          "february-revolution",
+          "october-revolution"
+        ]
+      },
+      {
+        "id": "andropov",
+        "group": "people",
+        "content": "Юрий Андропов",
+        "start": "1914-06-15",
+        "end": "1984-02-09",
+        "type": "range",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Генеральный секретарь ЦК КПСС.",
+        "related": [
+          "cold-war"
+        ]
+      },
+      {
+        "id": "chernenko",
+        "group": "people",
+        "content": "Константин Черненко",
+        "start": "1911-09-24",
+        "end": "1985-03-10",
+        "type": "range",
+        "tags": [
+          "ссср"
+        ],
+        "description": "Генеральный секретарь ЦК КПСС.",
+        "related": []
+      },
+      {
+        "id": "sinop-battle",
+        "group": "events",
+        "content": "Синопское сражение",
+        "start": "1853-11-30",
+        "type": "point",
+        "tags": [
+          "война",
+          "флот"
+        ],
+        "description": "Разгром османского флота русской эскадрой Нахимова.",
+        "related": [
+          "crimean-war",
+          "nakhimov"
+        ]
+      },
+      {
+        "id": "sevastopol-siege",
+        "group": "events",
+        "content": "Оборона Севастополя",
+        "start": "1854-09-13",
+        "end": "1855-09-09",
+        "type": "range",
+        "tags": [
+          "война",
+          "крым"
+        ],
+        "description": "Главное событие Крымской войны.",
+        "related": [
+          "crimean-war",
+          "nakhimov",
+          "kornilov"
+        ]
+      },
+      {
+        "id": "paris-treaty-1856",
+        "group": "events",
+        "content": "Парижский мир",
+        "start": "1856-03-30",
+        "type": "point",
+        "tags": [
+          "дипломатия"
+        ],
+        "description": "Окончание Крымской войны.",
+        "related": [
+          "crimean-war"
+        ]
+      },
+      {
+        "id": "nakhimov",
+        "group": "people",
+        "content": "Павел Нахимов",
+        "start": "1802-07-05",
+        "end": "1855-07-12",
+        "type": "range",
+        "tags": [
+          "флот"
+        ],
+        "description": "Адмирал, герой обороны Севастополя.",
+        "related": [
+          "crimean-war",
+          "sinop-battle",
+          "sevastopol-siege"
+        ]
+      },
+      {
+        "id": "kornilov",
+        "group": "people",
+        "content": "Владимир Корнилов",
+        "start": "1806-02-13",
+        "end": "1854-10-17",
+        "type": "range",
+        "tags": [
+          "флот"
+        ],
+        "description": "Один из руководителей обороны Севастополя.",
+        "related": [
+          "crimean-war",
+          "sevastopol-siege"
+        ]
+      },
+      {
+        "id": "yuri-dolgoruky",
+        "group": "people",
+        "content": "Юрий Долгорукий",
+        "start": "1090-01-01",
+        "end": "1157-05-15",
+        "type": "range",
+        "tags": [
+          "русь",
+          "князь",
+          "москва"
+        ],
+        "description": "Князь Ростово-Суздальский и великий князь Киевский. Традиционно считается основателем Москвы.",
+        "related": [
+          "moscow-founded"
+        ]
+      },
+      {
+        "id": "moscow-founded",
+        "group": "events",
+        "content": "Первое упоминание Москвы",
+        "start": "1147-04-04",
+        "type": "point",
+        "tags": [
+          "москва",
+          "русь"
+        ],
+        "description": "Первое летописное упоминание Москвы. Традиционная дата основания города.",
+        "related": [
+          "yuri-dolgoruky"
+        ]
+      },
+      {
+        "id": "saint-petersburg-founded",
+        "group": "events",
+        "content": "Основание Санкт-Петербурга",
+        "start": "1703-05-27",
+        "type": "point",
+        "tags": [
+          "российская империя",
+          "пётр i",
+          "город"
+        ],
+        "description": "Основание Санкт-Петербурга на Заячьем острове во время Северной войны.",
+        "related": [
+          "peter-i",
+          "north-war",
+          "charles-xii"
+        ]
+      },
+      {
+        "id": "derzhavin",
+        "group": "literature",
+        "content": "Гавриил Державин",
+        "start": "1743-07-14",
+        "end": "1816-07-20",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия"
+        ],
+        "description": "Крупнейший русский поэт эпохи Екатерины II.",
+        "related": [
+          "catherine-ii"
+        ]
+      },
+      {
+        "id": "lomonosov",
+        "group": "literature",
+        "content": "Михаил Ломоносов",
+        "start": "1711-11-19",
+        "end": "1765-04-15",
+        "type": "range",
+        "tags": [
+          "литература",
+          "поэзия",
+          "наука"
+        ],
+        "description": "Поэт, учёный, реформатор русского литературного языка.",
+        "related": [
+          "catherine-ii"
+        ]
+      },
+      {
+        "id": "kyiv-founded",
+        "group": "events",
+        "content": "Основание Киева",
+        "start": "482-01-01",
+        "type": "point",
+        "tags": [
+          "киев",
+          "русь"
+        ],
+        "description": "Традиционная дата основания Киева. Связана с легендой о Кии, Щеке и Хориве.",
+        "related": []
+      },
+      {
+        "id": "constantinople-founded",
+        "group": "events",
+        "content": "Основание Константинополя",
+        "start": "330-05-11",
+        "type": "point",
+        "tags": [
+          "византия"
+        ],
+        "description": "Новая столица Римской империи.",
+        "related": [
+          "constantine-great",
+          "byzantine-fall"
+        ]
+      },
+      {
+        "id": "fall-western-rome",
+        "group": "events",
+        "content": "Падение Западной Римской империи",
+        "start": "476-09-04",
+        "type": "point",
+        "tags": [
+          "рим"
+        ],
+        "description": "Свержение Ромула Августула.",
+        "related": []
+      },
+      {
+        "id": "muhammad",
+        "group": "people",
+        "content": "Мухаммед",
+        "start": "570",
+        "end": "632-06-08",
+        "type": "range",
+        "tags": [
+          "ислам"
+        ],
+        "description": "Основатель ислама.",
+        "related": []
+      },
+      {
+        "id": "great-schism",
+        "group": "events",
+        "content": "Великая схизма",
+        "start": "1054-07-16",
+        "type": "point",
+        "tags": [
+          "религия"
+        ],
+        "description": "Разделение христианства на католицизм и православие.",
+        "related": [
+          "baptism-rus"
+        ]
+      },
+      {
+        "id": "genghis-khan",
+        "group": "people",
+        "content": "Чингисхан",
+        "start": "1162-01-01",
+        "end": "1227-08-18",
+        "type": "range",
+        "tags": [
+          "монголы"
+        ],
+        "description": "Создатель Монгольской империи.",
+        "related": [
+          "mongol-invasion-rus"
+        ]
+      },
+      {
+        "id": "black-death",
+        "group": "events",
+        "content": "Чёрная смерть",
+        "start": "1346-01-01",
+        "end": "1353-01-01",
+        "type": "range",
+        "tags": [
+          "эпидемия"
+        ],
+        "description": "Крупнейшая пандемия Средневековья.",
+        "related": []
+      },
+      {
+        "id": "columbus",
+        "group": "people",
+        "content": "Христофор Колумб",
+        "start": "1451-01-01",
+        "end": "1506-05-20",
+        "type": "range",
+        "tags": [
+          "география"
+        ],
+        "description": "Открыл Америку для европейцев.",
+        "related": [
+          "discovery-america"
+        ]
+      },
+      {
+        "id": "napoleon",
+        "group": "people",
+        "content": "Наполеон Бонапарт",
+        "start": "1769-08-15",
+        "end": "1821-05-05",
+        "type": "range",
+        "tags": [
+          "франция",
+          "война",
+          "европа"
+        ],
+        "description": "Французский император, крупнейший полководец Нового времени.",
+        "related": [
+          "french-revolution",
+          "napoleonic-wars",
+          "patriotic-war-1812",
+          "waterloo"
+        ]
+      },
+      {
+        "id": "french-revolution",
+        "group": "events",
+        "content": "Великая французская революция",
+        "start": "1789-07-14",
+        "end": "1799-11-09",
+        "type": "range",
+        "tags": [
+          "франция",
+          "революция"
+        ],
+        "description": "Свержение монархии и радикальное переустройство Франции.",
+        "related": [
+          "napoleon"
+        ]
+      },
+      {
+        "id": "napoleonic-wars",
+        "group": "wars",
+        "content": "Наполеоновские войны",
+        "start": "1803-05-18",
+        "end": "1815-11-20",
+        "type": "range",
+        "tags": [
+          "европа",
+          "война"
+        ],
+        "description": "Серия войн Франции против европейских коалиций.",
+        "related": [
+          "napoleon",
+          "alexander-i"
+        ]
+      },
+      {
+        "id": "austerlitz",
+        "group": "events",
+        "content": "Битва при Аустерлице",
+        "start": "1805-12-02",
+        "type": "point",
+        "tags": [
+          "наполеон"
+        ],
+        "description": "Разгром русско-австрийской армии.",
+        "related": [
+          "napoleon",
+          "napoleonic-wars"
+        ]
+      },
+      {
+        "id": "tilsit",
+        "group": "events",
+        "content": "Тильзитский мир",
+        "start": "1807-07-07",
+        "type": "point",
+        "tags": [
+          "дипломатия"
+        ],
+        "description": "Союз Александра I и Наполеона.",
+        "related": [
+          "napoleon",
+          "alexander-i"
+        ]
+      },
+      {
+        "id": "patriotic-war-1812",
+        "group": "wars",
+        "content": "Отечественная война 1812 года",
+        "start": "1812-06-24",
+        "end": "1812-12-14",
+        "type": "range",
+        "tags": [
+          "россия",
+          "наполеон"
+        ],
+        "description": "Вторжение армии Наполеона в Россию.",
+        "related": [
+          "napoleon",
+          "alexander-i",
+          "kutuzov",
+          "borodino",
+          "moscow-fire-1812"
+        ]
+      },
+      {
+        "id": "borodino",
+        "group": "events",
+        "content": "Бородинское сражение",
+        "start": "1812-09-07",
+        "type": "point",
+        "tags": [
+          "1812"
+        ],
+        "description": "Крупнейшее сражение Отечественной войны.",
+        "related": [
+          "patriotic-war-1812",
+          "kutuzov",
+          "napoleon"
+        ]
+      },
+      {
+        "id": "waterloo",
+        "group": "events",
+        "content": "Битва при Ватерлоо",
+        "start": "1815-06-18",
+        "type": "point",
+        "tags": [
+          "наполеон"
+        ],
+        "description": "Окончательное поражение Наполеона.",
+        "related": [
+          "napoleon",
+          "napoleonic-wars"
+        ]
+      },
+      {
+        "id": "vienna-congress",
+        "group": "events",
+        "content": "Венский конгресс",
+        "start": "1814-09-18",
+        "end": "1815-06-09",
+        "type": "range",
+        "tags": [
+          "европа"
+        ],
+        "description": "Послевоенное переустройство Европы.",
+        "related": [
+          "napoleonic-wars",
+          "alexander-i"
+        ]
+      },
+      {
+        "id": "kutuzov",
+        "group": "people",
+        "content": "Михаил Кутузов",
+        "start": "1745-09-16",
+        "end": "1813-04-28",
+        "type": "range",
+        "tags": [
+          "армия"
+        ],
+        "description": "Главнокомандующий русской армией в 1812 году.",
+        "related": [
+          "patriotic-war-1812",
+          "borodino"
+        ]
+      },
+      {
+        "id": "wellington",
+        "group": "people",
+        "content": "Артур Уэлсли",
+        "start": "1769-05-01",
+        "end": "1852-09-14",
+        "type": "range",
+        "tags": [
+          "британия"
+        ],
+        "description": "Герцог Веллингтон, победитель при Ватерлоо.",
+        "related": [
+          "waterloo",
+          "napoleon"
+        ]
+      },
+      {
+        "id": "khmelnitsky",
+        "group": "events",
+        "content": "Основание г.Хмельницкий",
+        "start": "1431",
+        "type": "point",
+        "tags": [],
+        "description": "Хмельни́цкий (укр. Хмельни́цький; до 1795 года — Плоски́ров, до 1954 года — Проску́ров[4]) — город на западе Украины, административный центр Хмельницкой области, Хмельницкого района и Хмельницкой городской общины. Промышленный, торговый и культурный центр Подолья. Расположен на реке Южный Буг.",
+        "related": []
+      },
+      {
+        "id": "chaykovsky",
+        "group": "culture",
+        "content": "Чайковский, Пётр Ильич",
+        "start": "1840",
+        "end": "1893",
+        "type": "range",
+        "tags": [],
+        "description": "Пётр Ильи́ч Чайко́вский (25 апреля [7 мая] 1840, Воткинский завод, Вятская губерния — 25 октября [6 ноября] 1893, Санкт-Петербург) — русский композитор, педагог, дирижёр и музыкальный критик.",
+        "related": []
+      },
+      {
+        "id": "chaykovsky_korney",
+        "group": "literature",
+        "content": "Корней Чуковский",
+        "start": "1882",
+        "end": "1969",
+        "type": "range",
+        "tags": [],
+        "description": "Корне́й Ива́нович Чуко́вский (имя при рождении — Никола́й Корнейчуко́в; 19 [31] марта 1882, Санкт-Петербург, Российская империя — 28 октября 1969, Москва, СССР) — русский и советский поэт, публицист, литературный критик, переводчик и литературовед, детский писатель, журналист.",
+        "related": []
+      },
+      {
+        "id": "american-civil-war",
+        "group": "wars",
+        "content": "Гражданская война в США",
+        "start": "1861-04-12",
+        "end": "1865-05-26",
+        "type": "range",
+        "tags": [
+          "сша",
+          "война"
+        ],
+        "description": "Война между Союзом (Севером) и Конфедерацией (Югом).",
+        "related": [
+          "lincoln",
+          "confederacy",
+          "gettysburg",
+          "lee",
+          "grant",
+          "emancipation-proclamation",
+          "lincoln-assassination"
+        ]
+      },
+      {
+        "id": "lincoln",
+        "group": "people",
+        "content": "Авраам Линкольн",
+        "start": "1809-02-12",
+        "end": "1865-04-15",
+        "type": "range",
+        "tags": [
+          "сша",
+          "политика"
+        ],
+        "description": "16-й президент США. Руководил страной во время гражданской войны.",
+        "related": [
+          "american-civil-war",
+          "emancipation-proclamation",
+          "lincoln-assassination"
+        ]
+      },
+      {
+        "id": "confederacy",
+        "group": "events",
+        "content": "Создание Конфедерации",
+        "start": "1861-02-08",
+        "type": "point",
+        "tags": [
+          "сша",
+          "юг"
+        ],
+        "description": "Образование Конфедеративных Штатов Америки.",
+        "related": [
+          "american-civil-war",
+          "jefferson-davis"
+        ]
+      },
+      {
+        "id": "jefferson-davis",
+        "group": "people",
+        "content": "Джефферсон Дэвис",
+        "start": "1808-06-03",
+        "end": "1889-12-06",
+        "type": "range",
+        "tags": [
+          "сша",
+          "конфедерация"
+        ],
+        "description": "Президент Конфедеративных Штатов Америки.",
+        "related": [
+          "confederacy",
+          "american-civil-war"
+        ]
+      },
+      {
+        "id": "lee",
+        "group": "people",
+        "content": "Роберт Эдвард Ли",
+        "start": "1807-01-19",
+        "end": "1870-10-12",
+        "type": "range",
+        "tags": [
+          "сша",
+          "армия"
+        ],
+        "description": "Главнокомандующий армией Конфедерации.",
+        "related": [
+          "american-civil-war",
+          "gettysburg"
+        ]
+      },
+      {
+        "id": "grant",
+        "group": "people",
+        "content": "Улисс Грант",
+        "start": "1822-04-27",
+        "end": "1885-07-23",
+        "type": "range",
+        "tags": [
+          "сша",
+          "армия"
+        ],
+        "description": "Главнокомандующий армией Союза, позднее президент США.",
+        "related": [
+          "american-civil-war"
+        ]
+      },
+      {
+        "id": "gettysburg",
+        "group": "events",
+        "content": "Битва при Геттисберге",
+        "start": "1863-07-01",
+        "type": "point",
+        "tags": [
+          "сражение",
+          "сша"
+        ],
+        "description": "Переломное сражение гражданской войны.",
+        "related": [
+          "american-civil-war",
+          "lee"
+        ]
+      },
+      {
+        "id": "emancipation-proclamation",
+        "group": "events",
+        "content": "Прокламация об освобождении рабов",
+        "start": "1863-01-01",
+        "type": "point",
+        "tags": [
+          "сша",
+          "рабство"
+        ],
+        "description": "Линкольн объявил рабов в мятежных штатах свободными.",
+        "related": [
+          "lincoln",
+          "american-civil-war"
+        ]
+      },
+      {
+        "id": "lincoln-assassination",
+        "group": "events",
+        "content": "Убийство Линкольна",
+        "start": "1865-04-14",
+        "type": "point",
+        "tags": [
+          "сша",
+          "политика"
+        ],
+        "description": "Покушение на президента Авраама Линкольна в театре Форда.",
+        "related": [
+          "lincoln",
+          "american-civil-war"
+        ]
+      },
+      {
+        "id": "american-revolution",
+        "group": "wars",
+        "content": "Война за независимость США",
+        "start": "1775-04-19",
+        "end": "1783-09-03",
+        "type": "range",
+        "tags": [
+          "сша",
+          "революция",
+          "война"
+        ],
+        "description": "Война британских колоний в Северной Америке против Великобритании.",
+        "related": [
+          "declaration-independence",
+          "washington",
+          "franklin",
+          "jefferson",
+          "yorktown"
+        ]
+      },
+      {
+        "id": "declaration-independence",
+        "group": "events",
+        "content": "Декларация независимости США",
+        "start": "1776-07-04",
+        "type": "point",
+        "tags": [
+          "сша",
+          "революция"
+        ],
+        "description": "Провозглашение независимости Соединённых Штатов Америки.",
+        "related": [
+          "american-revolution",
+          "jefferson",
+          "franklin",
+          "washington"
+        ]
+      },
+      {
+        "id": "washington",
+        "group": "people",
+        "content": "Джордж Вашингтон",
+        "start": "1732-02-22",
+        "end": "1799-12-14",
+        "type": "range",
+        "tags": [
+          "сша",
+          "армия",
+          "президент"
+        ],
+        "description": "Главнокомандующий армией колоний и первый президент США.",
+        "related": [
+          "american-revolution",
+          "yorktown"
+        ]
+      },
+      {
+        "id": "jefferson",
+        "group": "people",
+        "content": "Томас Джефферсон",
+        "start": "1743-04-13",
+        "end": "1826-07-04",
+        "type": "range",
+        "tags": [
+          "сша",
+          "политика"
+        ],
+        "description": "Основной автор Декларации независимости.",
+        "related": [
+          "declaration-independence"
+        ]
+      },
+      {
+        "id": "franklin",
+        "group": "people",
+        "content": "Бенджамин Франклин",
+        "start": "1706-01-17",
+        "end": "1790-04-17",
+        "type": "range",
+        "tags": [
+          "сша",
+          "дипломатия",
+          "наука"
+        ],
+        "description": "Один из отцов-основателей США и главный дипломат революции.",
+        "related": [
+          "declaration-independence",
+          "american-revolution",
+          "paris-treaty-1783"
+        ]
+      },
+      {
+        "id": "john-adams",
+        "group": "people",
+        "content": "Джон Адамс",
+        "start": "1735-10-30",
+        "end": "1826-07-04",
+        "type": "range",
+        "tags": [
+          "сша",
+          "политика"
+        ],
+        "description": "Один из лидеров борьбы за независимость, второй президент США.",
+        "related": [
+          "declaration-independence",
+          "american-revolution"
+        ]
+      },
+      {
+        "id": "lexington-concord",
+        "group": "events",
+        "content": "Лексингтон и Конкорд",
+        "start": "1775-04-19",
+        "type": "point",
+        "tags": [
+          "сша",
+          "сражение"
+        ],
+        "description": "Первые сражения войны за независимость.",
+        "related": [
+          "american-revolution"
+        ]
+      },
+      {
+        "id": "saratoga",
+        "group": "events",
+        "content": "Битва при Саратоге",
+        "start": "1777-10-17",
+        "type": "point",
+        "tags": [
+          "сша",
+          "сражение"
+        ],
+        "description": "Переломный момент войны, убедивший Францию вступить в конфликт.",
+        "related": [
+          "american-revolution",
+          "franklin"
+        ]
+      },
+      {
+        "id": "yorktown",
+        "group": "events",
+        "content": "Осада Йорктауна",
+        "start": "1781-09-28",
+        "type": "point",
+        "tags": [
+          "сражение",
+          "сша"
+        ],
+        "description": "Решающая победа американцев и французов над британцами.",
+        "related": [
+          "american-revolution",
+          "washington"
+        ]
+      },
+      {
+        "id": "paris-treaty-1783",
+        "group": "events",
+        "content": "Парижский мир",
+        "start": "1783-09-03",
+        "type": "point",
+        "tags": [
+          "сша",
+          "дипломатия"
+        ],
+        "description": "Великобритания официально признала независимость США.",
+        "related": [
+          "american-revolution",
+          "franklin",
+          "john-adams"
+        ]
+      },
+      {
+        "id": "karamzin",
+        "group": "literature",
+        "content": "Никола́й Карамзи́н",
+        "start": "1766",
+        "end": "1826",
+        "type": "range",
+        "tags": [
+          "литература",
+          "россия"
+        ],
+        "description": "Никола́й Миха́йлович Карамзи́н (1 [12] декабря 1766, Знаменское (Карамзино), Синбирский уезд, Синбирская провинция, Казанская губерния (либо село Михайловка (Карамзиха, ныне — Преображенка)[6][7], Оренбургская губерния) — 22 мая [3 июня] 1826[8], Санкт-Петербург) — русский писатель и историк. Действительный статский советник (1824). Почётный член Петербургской академии наук (с 1818).",
+        "related": []
+      },
+      {
+        "id": "year_0",
+        "group": "wars",
+        "content": "Рождение Христа",
+        "start": "0",
+        "type": "point",
+        "tags": [],
+        "description": "Иису́с Христо́с (греч. Ἰησοῦς Χριστός[1][3][4]) — в христианстве Бог Сын (второе лицо Святой Троицы), Богочеловек и предсказанный в Ветхом Завете Мессия, ставший искупительной жертвой за грехи людей[1][3]. Эпитетом Иисуса Христа стал Спаси́тель (Спас)[1]. Согласно христианству, в единстве его личности вмещается и вся полнота божественной природы как Бога Сына («не имеющий начала дней»), и вся конкретность конечной человеческой природы как человека, проповедовавшего в Галилее и распятого на кресте около 30 года н. э.[1] Сын Божий называется Иисусом Христом, начиная с боговоплощения[5]. Был иудеем[1], еврейским проповедником[3][6], последователи которого, начиная с апостолов, создали религиозное движение, развившееся в новую религию, отделившуюся от иудаизма — христианство[6].",
+        "related": []
+      },
+      {
+        "id": "dmitry-donskoy",
+        "group": "people",
+        "content": "Дмитрий Донской",
+        "start": "1350-10-12",
+        "end": "1389-05-19",
+        "type": "range",
+        "tags": [
+          "москва",
+          "русь",
+          "князь"
+        ],
+        "description": "Великий князь Московский. Победитель в Куликовской битве.",
+        "related": [
+          "kulikovo-battle",
+          "sergius-radonezh"
+        ]
+      },
+      {
+        "id": "sergius-radonezh",
+        "group": "people",
+        "content": "Сергий Радонежский",
+        "start": "1314-05-03",
+        "end": "1392-09-25",
+        "type": "range",
+        "tags": [
+          "религия",
+          "русь"
+        ],
+        "description": "Игумен Троицкого монастыря. Благословил Дмитрия Донского на битву.",
+        "related": [
+          "kulikovo-battle"
+        ]
+      },
+      {
+        "id": "kulikovo-battle",
+        "group": "wars",
+        "content": "Куликовская битва",
+        "start": "1380-09-08",
+        "type": "point",
+        "tags": [
+          "русь",
+          "орда",
+          "сражение"
+        ],
+        "description": "Победа объединённого русского войска над войском Мамая на Куликовом поле.",
+        "related": [
+          "dmitry-donskoy",
+          "sergius-radonezh",
+          "tokhtamysh-invasion"
+        ]
+      },
+      {
+        "id": "tokhtamysh",
+        "group": "people",
+        "content": "Тохтамыш",
+        "start": "1342-01-01",
+        "end": "1406-01-01",
+        "type": "range",
+        "tags": [
+          "орда"
+        ],
+        "description": "Хан Золотой Орды, объединивший Орду после поражения Мамая.",
+        "related": [
+          "tokhtamysh-invasion",
+          "kulikovo-battle"
+        ]
+      },
+      {
+        "id": "tokhtamysh-invasion",
+        "group": "events",
+        "content": "Разорение Москвы Тохтамышем",
+        "start": "1382-08-26",
+        "type": "point",
+        "tags": [
+          "орда",
+          "москва"
+        ],
+        "description": "Через два года после Куликовской битвы Москва была взята и сожжена Тохтамышем.",
+        "related": [
+          "tokhtamysh",
+          "dmitry-donskoy",
+          "kulikovo-battle"
+        ]
+      },
+      {
+        "id": "battle-vorskla",
+        "group": "events",
+        "content": "Битва на Ворскле",
+        "start": "1399-08-12",
+        "type": "point",
+        "tags": [
+          "литва",
+          "орда"
+        ],
+        "description": "Поражение войск Витовта от ордынцев. Показало сохранение силы Орды после Куликова поля.",
+        "related": [
+          "tokhtamysh"
+        ]
+      },
+      {
+        "id": "ochakov-siege",
+        "group": "events",
+        "content": "Штурм Очакова",
+        "start": "1788-12-17",
+        "type": "point",
+        "tags": [
+          "турция",
+          "война"
+        ],
+        "description": "Взятие турецкой крепости Очаков русскими войсками.",
+        "related": [
+          "suvorov",
+          "potemkin",
+          "russo-turkish-war-1787"
+        ]
+      },
+      {
+        "id": "russo-turkish-war-1787",
+        "group": "wars",
+        "content": "Русско-турецкая война",
+        "start": "1787-08-24",
+        "end": "1792-01-09",
+        "type": "range",
+        "tags": [
+          "россия",
+          "турция"
+        ],
+        "description": "Война за Причерноморье и признание присоединения Крыма.",
+        "related": [
+          "crimea-annexation",
+          "ochakov-siege",
+          "izmail-storm"
+        ]
+      },
+      {
+        "id": "izmail-storm",
+        "group": "events",
+        "content": "Штурм Измаила",
+        "start": "1790-12-22",
+        "type": "point",
+        "tags": [
+          "турция",
+          "суворов"
+        ],
+        "description": "Одна из самых известных побед Суворова.",
+        "related": [
+          "suvorov",
+          "russo-turkish-war-1787"
+        ]
+      },
+      {
+        "id": "potemkin",
+        "group": "people",
+        "content": "Григорий Потёмкин",
+        "start": "1739-10-11",
+        "end": "1791-10-16",
+        "type": "range",
+        "tags": [
+          "россия"
+        ],
+        "description": "Организатор освоения Новороссии и присоединения Крыма.",
+        "related": [
+          "crimea-annexation",
+          "ochakov-siege"
+        ]
+      },
+      {
+        "id": "suvorov",
+        "group": "people",
+        "content": "Александр Суворов",
+        "start": "1730-11-24",
+        "end": "1800-05-18",
+        "type": "range",
+        "tags": [
+          "армия"
+        ],
+        "description": "Выдающийся русский полководец.",
+        "related": [
+          "ochakov-siege",
+          "izmail-storm"
+        ]
+      },
+      {
+        "id": "siege-of-izmail",
+        "content": "Взятие крепости Измаил",
+        "group": "events",
+        "type": "point",
+        "start": "1790-12-22",
+        "description": "Штурм и взятие считавшейся неприступной турецкой крепости Измаил русскими войсками под командованием А. В. Суворова в ходе Русско-турецкой войны.",
+        "tags": [
+          "россия",
+          "османская-империя",
+          "битва"
+        ],
+        "related": [
+          "suvorov",
+          "rus-turkish-war-1787"
+        ]
+      },
+      {
+        "id": "swiss-campaign",
+        "content": "Швейцарский поход Суворова",
+        "group": "wars",
+        "type": "range",
+        "start": "1799-09-21",
+        "description": "Легендарный переход русских войск под командованием фельдмаршала А. В. Суворова через Альпы в ходе войны Второй коалиции.",
+        "tags": [
+          "россия",
+          "франция",
+          "альпы",
+          "поход"
+        ],
+        "related": [
+          "suvorov",
+          "italian-campaign",
+          "french-revolutionary-wars"
+        ],
+        "end": "1799-10-08"
+      }
+    ],
+    "tags": [
+      "1812",
+      "альпы",
+      "анархизм",
+      "армения",
+      "армия",
+      "атом",
+      "афганистан",
+      "битва",
+      "большевики",
+      "британия",
+      "византия",
+      "воин",
+      "война",
+      "восстание",
+      "география",
+      "германия",
+      "гетманат",
+      "город",
+      "гражданская война",
+      "дипломатия",
+      "диссиденты",
+      "драматургия",
+      "европа",
+      "екатерина-ii",
+      "император",
+      "императрица",
+      "империя",
+      "инженер",
+      "ислам",
+      "история",
+      "кавказ",
+      "казачество",
+      "катастрофа",
+      "кибернетика",
+      "киев",
+      "кинематограф",
+      "кино",
+      "князь",
+      "константинополь",
+      "конфедерация",
+      "корея",
+      "космос",
+      "крещение",
+      "крым",
+      "литва",
+      "литература",
+      "международные отношения",
+      "монах",
+      "монголы",
+      "москва",
+      "московия",
+      "музыка",
+      "наполеон",
+      "наука",
+      "одесса",
+      "орда",
+      "османская-империя",
+      "оун",
+      "перестройка",
+      "пётр i",
+      "политика",
+      "польша",
+      "поход",
+      "поэзия",
+      "президент",
+      "проза",
+      "рабство",
+      "революция",
+      "религия",
+      "репрессии",
+      "реформы",
+      "рим",
+      "романовы",
+      "российская империя",
+      "россия",
+      "русь",
+      "сатира",
+      "северная война",
+      "сельское хозяйство",
+      "серебряный век",
+      "смута",
+      "сражение",
+      "ссср",
+      "суворов",
+      "сша",
+      "театр",
+      "технологии",
+      "турция",
+      "украина",
+      "унр",
+      "фантастика",
+      "физика",
+      "флот",
+      "франция",
+      "холодная война",
+      "царь",
+      "чехословакия",
+      "швеция",
+      "экономика",
+      "эмиграция",
+      "эпидемия",
+      "юг"
+    ]
+  }
+}

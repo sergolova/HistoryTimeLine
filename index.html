@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Историческая шкала</title>
+    <link rel="stylesheet" href="libs/vis-timeline-8.5.1/dist/vis-timeline-graph2d.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="app-shell">
+    <header class="app-header">
+        <div class="header-row">
+            <div>
+                <h1>Историческая шкала</h1>
+            </div>
+
+            <div class="file-actions">
+                <button id="openFileBtn" type="button">Открыть JSON</button>
+                <button id="saveFileBtn" type="button">Сохранить</button>
+                <button id="saveAsFileBtn" type="button">Сохранить как...</button>
+                <button id="exportStorageBtn" type="button">Экспорт localStorage</button>
+                <button id="importStorageBtn" type="button">Импорт localStorage</button>
+                <button id="importTextBtn" type="button">Импорт из буфера</button>
+                <button id="resetStorageBtn" type="button">Сбросить localStorage</button>
+            </div>
+        </div>
+        <div id="fileStatus" class="file-status">Источник: встроенный data.json</div>
+    </header>
+
+    <div class="layout">
+        <aside class="left-panel card">
+            <div class="section-title">Группы (видимость)</div>
+            <div class="manager-form manager-form-row group-visibility-actions">
+                <button id="showAllGroupsBtn" type="button">Показать</button>
+                <button id="hideAllGroupsBtn" type="button">Скрыть</button>
+                <button id="invertGroupsBtn" type="button">Инверт.</button>
+            </div>
+            <div id="groupFilters" class="group-filters"></div>
+            <div class="section-title">Теги</div>
+            <div class="manager-form manager-form-row">
+                <label for="tagSearchInput" class="visually-hidden">Поиск тегов</label>
+                <input id="tagSearchInput" placeholder="Поиск тегов...">
+            </div>
+            <div id="tags"></div>
+        </aside>
+
+        <main class="main card">
+            <div class="title-row">
+                <div class="timeline-toolbar">
+                    <label for="search" class="visually-hidden">Поиск по событиям</label>
+                    <div class="timeline-search-wrapper">
+                        <input id="search" class="timeline-search" placeholder="Поиск по событиям...">
+                        <button id="clearSearch" class="search-clear-btn" type="button" aria-label="Очистить поиск" hidden>&times;</button>
+                    </div>
+                    <input type="checkbox" id="highlightSearchCheckbox" class="filter-checkbox">
+                    <label for="highlightSearchCheckbox" class="">Подсветка</label>
+                </div>
+                <div class="timeline-actions">
+                    <button id="resetZoomBtn" type="button">Сброс масштаба</button>
+                    <button id="addItemBtn" type="button">+ Событие</button>
+                    <button id="editItemBtn" type="button">Редактировать</button>
+                    <button id="deleteItemBtn" type="button">Удалить</button>
+                </div>
+            </div>
+            <div id="timelineWrap" class="timeline-wrap">
+                <div id="timeline"></div>
+                <div id="hoverLine" class="timeline-line hover-line"></div>
+                <div id="hoverDate" class="hover-date"></div>
+                <div id="selectionStartLine" class="timeline-line selection-line"></div>
+                <div id="selectionEndLine" class="timeline-line selection-line"></div>
+                <div id="intervalLine" class="interval-line"></div>
+                <div id="intervalLabel" class="interval-label"></div>
+                <div id="intervalArrowLeft" class="interval-arrow interval-arrow-left"></div>
+                <div id="intervalArrowRight" class="interval-arrow interval-arrow-right"></div>
+            </div>
+        </main>
+
+        <aside class="right-panel card">
+            <div class="section-title">Детали события</div>
+            <div id="details" class="details-empty">
+                Выберите событие на таймлайне
+            </div>
+        </aside>
+    </div>
+</div>
+
+<dialog id="itemDialog">
+    <form id="itemForm" method="dialog">
+        <div class="dialog-header">
+            <h2 id="itemDialogTitle">Событие</h2>
+            <div class="dialog-header-actions">
+                <button id="saveItemBtn" type="submit">Сохранить</button>
+                <button id="closeItemDialogBtn" type="button" class="ghost-btn">Закрыть</button>
+            </div>
+        </div>
+
+        <div class="dialog-grid">
+            <label>
+                Название
+                <input id="itemContentInput" required>
+            </label>
+            <label>
+                Группа
+                <select id="itemGroupInput" required></select>
+            </label>
+            <label>
+                ID
+                <input id="itemIdInput" required>
+            </label>
+            <label>
+                Тип
+                <select id="itemTypeInput">
+                    <option value="point">point</option>
+                    <option value="range">range</option>
+                </select>
+            </label>
+            <label>
+                Начало (Г / Г-ММ / Г-ММ-ДД, год 0..9999)
+                <input id="itemStartInput" placeholder="456 или 456-06 или 456-06-27" required>
+            </label>
+            <label>
+                Конец для range (Г / Г-ММ / Г-ММ-ДД, год 0..9999)
+                <input id="itemEndInput" placeholder="0 или 1721-09-10">
+            </label>
+            <label class="full-width">
+                Описание
+                <textarea id="itemDescriptionInput" rows="3"></textarea>
+            </label>
+            <div class="full-width">
+                <label>
+                    Теги (через запятую)
+                    <input id="itemTagsInput" placeholder="война, дипломатия, культура">
+                </label>
+            </div>
+            <div class="full-width">
+                <label>
+                    Связанные события
+                    <select id="itemRelatedInput" multiple></select>
+                </label>
+            </div>
+        </div>
+
+    </form>
+</dialog>
+
+<dialog id="importDialog">
+    <form id="importForm" method="dialog">
+        <div class="dialog-header">
+            <h2>Импорт JSON</h2>
+            <div class="dialog-header-actions">
+                <button id="applyImportBtn" type="submit">Добавить</button>
+                <button id="closeImportDialogBtn" type="button" class="ghost-btn">Закрыть</button>
+            </div>
+        </div>
+
+        <label class="full-width">
+            Вставьте JSON (объект события, массив событий или объект с полем items)
+            <textarea id="importTextInput" rows="12" placeholder='{"id":"eternal-peace","group":"events","content":"Вечный мир","start":"1686-05-06","type":"box"}'></textarea>
+        </label>
+    </form>
+</dialog>
+
+<input id="stateFileInput" type="file" accept="application/json,.json" class="visually-hidden">
+
+<script src="libs/vis-timeline-8.5.1/dist/vis-timeline-graph2d.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
