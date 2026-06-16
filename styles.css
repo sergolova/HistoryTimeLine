@@ -797,3 +797,13 @@ button:hover {
 .timeline-search::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
+
+#wiki-link {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#wiki-link:hover {
+    text-decoration: underline;
+}

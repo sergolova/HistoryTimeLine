@@ -433,9 +433,10 @@ function showDetails(id) {
         ? `<ul>${related}</ul>`
         : '<p>Связанных событий нет.</p>';
 
+    let initialWiki = `https://ru.wikipedia.org/w/index.php?search=${encodeURIComponent(item.content.trim())}`;
     detailsEl.classList.remove('details-empty');
     detailsEl.innerHTML = `
-        <h2>${escapeHtml(item.content)}</h2>
+        <a id="wiki-link" href="${initialWiki}" target="_blank"><h2>${escapeHtml(item.content)}</h2></a>
         <p class="item-meta">ID: ${escapeHtml(item.id)} | Группа: ${escapeHtml(item.group)}</p>
         <p class="item-meta">Дата: ${dateLabel}</p>
         <p>${escapeHtml(item.description || 'Описание не заполнено')}</p>
@@ -443,6 +444,13 @@ function showDetails(id) {
         <h3>Связи</h3>
         ${relations}
     `;
+
+    getSmartWikipediaUrl(item.content).then(smartUrl => {
+        const wikiLinkEl = document.getElementById('wiki-link');
+        if (wikiLinkEl) {
+            wikiLinkEl.href = smartUrl;
+        }
+    }).catch(err => console.error("Вики недоступна:", err));
 
     bindRelatedLinks();
     bindDetailsTagClicks();
@@ -2294,4 +2302,22 @@ function toVisDate(value, isEnd) {
     }
 
     return createUtcDateWithYear(year, month - 1, day);
+}
+
+async function getSmartWikipediaUrl(content) {
+    const query = content.trim();
+    const apiUrl = `https://ru.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=1&namespace=0&format=json&origin=*`;
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        // data[3] — это массив со ссылками на найденные статьи
+        if (data[3] && data[3].length > 0) {
+            return data[3][0]; // Возвращаем прямую ссылку на первую точную статью
+        }
+    } catch (error) {
+        console.error("Ошибка API Википедии, переключаемся на обычный поиск", error);
+    }
+
+    // Если точной статьи нет или API упал — отдаем ссылку на страницу поиска
+    return `https://ru.wikipedia.org/w/index.php?search=${encodeURIComponent(query)}`;
 }
