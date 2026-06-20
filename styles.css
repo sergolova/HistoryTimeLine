@@ -25,6 +25,11 @@ body {
     padding: 24px;
 }
 
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
 .app-header {
     margin-bottom: 16px;
     padding: 16px 18px;
@@ -47,6 +52,13 @@ body {
 .header-row {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.header-column {
+    display: flex;
+    flex-direction: row;
     align-items: flex-start;
     gap: 16px;
 }

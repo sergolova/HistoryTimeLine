@@ -12,6 +12,7 @@ let editOriginalId = null;
 let searchQuery = '';
 let highlightQuery = '';
 let tagSearchQuery = '';
+let eventJsonExample = '';
 
 const activeTags = new Set();
 const activeGroups = new Set();
@@ -89,6 +90,7 @@ const fileApiSupported =
 initApp();
 
 async function initApp() {
+    loadEventJsonExample();
     bindSearch();
     bindTagSearch();
     bindFileActions();
@@ -170,6 +172,48 @@ async function loadDefaultData() {
         resetDetails('Ошибка загрузки данных. Откройте JSON вручную.');
         console.error(error);
     }
+}
+
+function loadEventJsonExample() {
+    eventJsonExample = `{
+  "items": [
+    {
+      "id": "nikolai-sklifosovsky",
+      "group": "people",
+      "content": "Николай Склифосовский",
+      "start": "1836-04-06",
+      "end": "1904-12-13",
+      "type": "range",
+      "tags": [
+        "россия",
+        "медицина",
+        "наука",
+        "хирургия"
+      ],
+      "description": "Выдающийся хирург и ученый, новатор в области полостной хирургии, антисептики и асептики. Внедрил в практику стерилизацию инструментов и внес огромный вклад в организацию скорой помощи.",
+      "related": [
+        "nikolai-pirogov"
+      ]
+    },
+    {
+      "id": "dynastic-crisis-rurik",
+      "group": "events",
+      "content": "Пресечение династии Рюриковичей",
+      "start": "1598-01-16",
+      "type": "point",
+      "tags": [
+        "россия",
+        "кризис",
+        "династия"
+      ],
+      "description": "Смерть бездетного царя Фёдора Иоанновича, ознаменовавшая конец многовекового правления Рюриковичей и начало борьбы за престол.",
+      "related": [
+        "rule-fyodor-i",
+        "rule-boris-godunov"
+      ]
+    }
+  ]
+}`;
 }
 
 function normalizeData(data) {
@@ -346,6 +390,10 @@ function buildTimeline() {
         new vis.DataSet(rawData.groups),
         {
             zoomKey: 'ctrlKey',
+            orientation: {
+                axis: 'both',
+                item: 'bottom'  
+            },
             margin: {
                 item: {
                     horizontal: 4,
@@ -1289,6 +1337,7 @@ function bindFileActions() {
     const exportStorageBtn = document.getElementById('exportStorageBtn');
     const importStorageBtn = document.getElementById('importStorageBtn');
     const importTextBtn = document.getElementById('importTextBtn');
+    const copyExampleBtn = document.getElementById('copyExample');
     const resetStorageBtn = document.getElementById('resetStorageBtn');
 
     exportStorageBtn.addEventListener('click', exportStorageToFile);
@@ -1297,6 +1346,24 @@ function bindFileActions() {
     importTextBtn.addEventListener('click', () => {
         importTextInputEl.value = '';
         importDialogEl.showModal();
+        const inputElement = document.getElementById("importTextInput");
+        inputElement.focus();
+    });
+
+    copyExampleBtn.addEventListener('click', (event) => {
+        if (!rawData || !rawData.groups.length) {
+            return;
+        }
+        let groupsArr = [];
+        rawData.groups.forEach(group => {
+            groupsArr.push(group.id);
+        });
+        const groups = groupsArr.join(', ');
+
+        event.preventDefault();
+        navigator.clipboard.writeText(`// known groups: ${groups}
+            ${eventJsonExample || ''}`);
+        updateFileStatus('Пример JSON скопирован в буфер обмена');
     });
 
     resetStorageBtn.addEventListener('click', async () => {

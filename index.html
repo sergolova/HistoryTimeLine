@@ -6,13 +6,15 @@
     <title>Историческая шкала</title>
     <link rel="stylesheet" href="libs/vis-timeline-8.5.1/dist/vis-timeline-graph2d.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
 <body>
 <div class="app-shell">
     <header class="app-header">
         <div class="header-row">
-            <div>
+            <div class="header-column">
+                <img src="favicon.png" alt="Логотип" class="logo">
                 <h1>Историческая шкала</h1>
             </div>
 
@@ -150,6 +152,7 @@
         <div class="dialog-header">
             <h2>Импорт JSON</h2>
             <div class="dialog-header-actions">
+                <button id="copyExample">Копировать шаблон</button>
                 <button id="applyImportBtn" type="submit">Добавить</button>
                 <button id="closeImportDialogBtn" type="button" class="ghost-btn">Закрыть</button>
             </div>
