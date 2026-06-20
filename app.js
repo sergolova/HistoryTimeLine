@@ -390,6 +390,8 @@ function buildTimeline() {
         new vis.DataSet(rawData.groups),
         {
             zoomKey: 'ctrlKey',
+            selectable: true,
+            verticalScroll: true,
             orientation: {
                 axis: 'both',
                 item: 'bottom'  
@@ -400,7 +402,36 @@ function buildTimeline() {
                     vertical: 2
                 },
                 axis: 4
-            }
+            },
+            min: new Date(-100, 0, 1), // не листать глубже 2000 года до н.э.
+            max: new Date(2100, 0, 1),  // не листать дальше будущего
+            zoomMin: 10 * 1000 * 60 * 60 * 24 * 30, // минимальный зум — 10 месяцев
+            locale: 'ru',
+            format: {
+                minorLabels: {
+                    month: 'MMM', // Отобразит "Янв", "Фев" на мелкой сетке
+                    year: 'YYYY г.'
+                },
+                majorLabels: {
+                    month: 'YYYY г.', // На крупной сетке покажет год
+                    year: ''
+                }
+            },
+            stackSubgroups: true,
+            groupOrder: 'id', // отсортирует группы по алфавиту их ID
+
+            // groupTemplate: function(group) {
+            //     // Делаем красивые заголовки для панели групп
+            //     return `<div class="custom-group-label">
+            //     <span class="icon-${group.id}"></span>
+            //     <strong>${group.content.toUpperCase()}</strong>
+            // </div>`;
+            // }
+            // если в одной точке больше 10 ивентов, они соберутся в кружок
+            // cluster: {
+            //     maxItems: 10,
+            //     titleTemplate: 'Тут сидит {count} событий'
+            // }
         }
     );
 
