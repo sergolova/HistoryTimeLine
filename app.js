@@ -1,4 +1,6 @@
 const STORAGE_KEY = 'historyTimeline:data:v1';
+const IMAGE_CACHE_KEY = 'historyTimeline:images:v1';
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 let rawData;
 let timeline;
@@ -31,6 +33,7 @@ const intervalArrowRightEl = document.getElementById('intervalArrowRight');
 // dynamic elements for hovered-item guide lines (created at runtime)
 let hoverSelectionStartEl = null;
 let hoverSelectionEndEl = null;
+let imageCache = {};
 
 // Keep floating labels inside viewport horizontally
 function clampLabelToViewport(el) {
@@ -90,6 +93,7 @@ async function initApp() {
     bindTagSearch();
     bindFileActions();
     bindCrudActions();
+    loadImageCache();
 
     const cached = loadFromStorage();
     if (cached) {
@@ -119,6 +123,25 @@ function loadFromStorage() {
     } catch (error) {
         console.warn('localStorage read error:', error);
         return null;
+    }
+}
+
+function loadImageCache() {
+    try {
+        let raw = localStorage.getItem(IMAGE_CACHE_KEY) || '{}';
+        if (!raw) {
+            return null;
+        }
+        imageCache = JSON.parse(raw) || {};
+    } catch (error) {
+        imageCache = {}
+    }
+}
+
+function saveImageCache() {
+    try {
+        localStorage.setItem(IMAGE_CACHE_KEY, JSON.stringify(imageCache));
+    } catch (error) {
     }
 }
 
@@ -433,10 +456,13 @@ function showDetails(id) {
         ? `<ul>${related}</ul>`
         : '<p>Связанных событий нет.</p>';
 
+    // 1. Render the card instantly using the default search URL
     let initialWiki = `https://ru.wikipedia.org/w/index.php?search=${encodeURIComponent(item.content.trim())}`;
+
     detailsEl.classList.remove('details-empty');
     detailsEl.innerHTML = `
         <a id="wiki-link" href="${initialWiki}" target="_blank"><h2>${escapeHtml(item.content)}</h2></a>
+        <div id="wiki-image-container"></div>
         <p class="item-meta">ID: ${escapeHtml(item.id)} | Группа: ${escapeHtml(item.group)}</p>
         <p class="item-meta">Дата: ${dateLabel}</p>
         <p>${escapeHtml(item.description || 'Описание не заполнено')}</p>
@@ -445,12 +471,18 @@ function showDetails(id) {
         ${relations}
     `;
 
-    getSmartWikipediaUrl(item.content).then(smartUrl => {
+    getSmartWikipediaData(item.content).then(data => {
         const wikiLinkEl = document.getElementById('wiki-link');
+        const imgContainer = document.getElementById('wiki-image-container');
+
         if (wikiLinkEl) {
-            wikiLinkEl.href = smartUrl;
+            wikiLinkEl.href = data.url; // Updating the link to the correct article
         }
-    }).catch(err => console.error("Вики недоступна:", err));
+
+        if (imgContainer && data.image) {
+            imgContainer.innerHTML = `<img src="${data.image}" alt="${escapeHtml(item.content)}" style="max-width: 100%; height: auto; border-radius: 6px; margin-bottom: 15px;">`;
+        }
+    }).catch(err => console.error(err));
 
     bindRelatedLinks();
     bindDetailsTagClicks();
@@ -2304,6 +2336,63 @@ function toVisDate(value, isEnd) {
     return createUtcDateWithYear(year, month - 1, day);
 }
 
+async function getSmartWikipediaData(content) {
+    const query = content.trim();
+    const fallbackSearchUrl = `https://ru.wikipedia.org/w/index.php?search=${encodeURIComponent(query)}`;
+
+    // 1. First query: Search for the exact title of the article using OpenSearch
+    const searchApiUrl = `https://ru.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=1&namespace=0&format=json&origin=*`;
+
+    try {
+        const searchResponse = await fetch(searchApiUrl);
+        const searchData = await searchResponse.json();
+
+        // If nothing is found, we return the default search link and "null" instead of an image
+        if (!searchData[1] || searchData[1].length === 0) {
+            return {url: fallbackSearchUrl, image: null};
+        }
+
+        const exactTitle = searchData[1][0];
+        const articleUrl = searchData[3][0];
+
+        const cachedData = imageCache[query];
+        const isCacheExpired = cachedData && (new Date() - new Date(cachedData.timestamp) > ONE_DAY_MS);
+
+        if (!cachedData || isCacheExpired) {
+            // 2. Second query: retrieve the main image based on the exact article title
+            // piprop=original retrieves the original image; if you need a preview size, use thumbnail and specify pitsize=500
+            const imageApiUrl = `https://ru.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(exactTitle)}&prop=pageimages&piprop=original&redirects=1&format=json&origin=*`;
+
+            const imgResponse = await fetch(imageApiUrl);
+            const imgData = await imgResponse.json();
+
+            // In the Wikipedia API, pages are stored within the `query.pages` object under dynamic ID keys
+            const pages = imgData.query.pages;
+            const pageId = Object.keys(pages)[0];
+
+            let imageUrl = null;
+            if (pageId && pageId !== "-1" && pages[pageId].original) {
+                imageUrl = pages[pageId].original.source; // Ссылка на файл изображения
+            }
+
+            imageCache[query] = {
+                url: imageUrl,
+                timestamp: new Date().toISOString()
+            };
+            saveImageCache();
+        }
+
+        return {
+            url: articleUrl,
+            image: imageCache[query] ? imageCache[query].url : null
+        };
+
+    } catch (error) {
+        console.error("Ошибка API Википедии:", error);
+        return {url: fallbackSearchUrl, image: null};
+    }
+}
+
 async function getSmartWikipediaUrl(content) {
     const query = content.trim();
     const apiUrl = `https://ru.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=1&namespace=0&format=json&origin=*`;
@@ -2318,6 +2407,6 @@ async function getSmartWikipediaUrl(content) {
         console.error("Ошибка API Википедии, переключаемся на обычный поиск", error);
     }
 
-    // Если точной статьи нет или API упал — отдаем ссылку на страницу поиска
+    // If there isn't an exact article or the API is down, we provide a link to the search page
     return `https://ru.wikipedia.org/w/index.php?search=${encodeURIComponent(query)}`;
 }
