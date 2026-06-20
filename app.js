@@ -1787,18 +1787,22 @@ function formatDateValue(value) {
         return `${year} г.`;
     }
 
-    const monthName = new Intl.DateTimeFormat('ru-RU', {month: 'long'})
+    let monthName = new Intl.DateTimeFormat('ru-RU', {month: 'short'})
         .format(createUtcDateWithYear(year, month - 1, 1));
+
+    monthName = monthName.charAt(0).toUpperCase() + monthName.slice(1).replace('.', '');
 
     if (!day) {
         return `${monthName} ${year} г.`;
     }
 
-    const dayMonth = new Intl.DateTimeFormat('ru-RU', {
+    let dayMonth = new Intl.DateTimeFormat('ru-RU', {
         day: 'numeric',
-        month: 'long',
+        month: 'short',
         timeZone: 'UTC'
     }).format(createUtcDateWithYear(year, month - 1, day));
+
+    dayMonth = dayMonth.replace('.', '');
 
     return `${dayMonth} ${year} г.`;
 }
