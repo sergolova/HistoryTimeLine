@@ -85,10 +85,6 @@ const stateFileInputEl = document.getElementById('stateFileInput');
 
 // hoveredItemId is declared earlier and used to track current hovered item from timeline events
 
-const fileApiSupported =
-    'showOpenFilePicker' in window &&
-    'showSaveFilePicker' in window;
-
 initApp();
 
 async function initApp() {
@@ -111,10 +107,6 @@ async function initApp() {
     }
 
     await loadDefaultData();
-
-    if (!fileApiSupported) {
-        updateFileStatus('File API не поддерживается. Используется localStorage.');
-    }
 }
 
 function loadFromStorage() {
@@ -1381,9 +1373,6 @@ function finalizeDataMutation(message) {
 }
 
 function bindFileActions() {
-    const openBtn = document.getElementById('openFileBtn');
-    const saveBtn = document.getElementById('saveFileBtn');
-    const saveAsBtn = document.getElementById('saveAsFileBtn');
     const exportStorageBtn = document.getElementById('exportStorageBtn');
     const importStorageBtn = document.getElementById('importStorageBtn');
     const importTextBtn = document.getElementById('importTextBtn');
@@ -1425,17 +1414,6 @@ function bindFileActions() {
         fileHandle = null;
         await loadDefaultData();
     });
-
-    if (!fileApiSupported) {
-        openBtn.disabled = true;
-        saveBtn.disabled = true;
-        saveAsBtn.disabled = true;
-        return;
-    }
-
-    openBtn.addEventListener('click', openDataFile);
-    saveBtn.addEventListener('click', () => saveDataFile(false));
-    saveAsBtn.addEventListener('click', () => saveDataFile(true));
 }
 
 async function openDataFile() {
