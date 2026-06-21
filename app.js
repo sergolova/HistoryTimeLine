@@ -1,6 +1,8 @@
 const STORAGE_KEY = 'historyTimeline:data:v1';
 const IMAGE_CACHE_KEY = 'historyTimeline:images:v1';
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+const ACTUAL_DATE_START = 1700;
+const ACTUAL_DATE_END = 2050;
 
 let rawData;
 let timeline;
@@ -384,10 +386,12 @@ function buildTimeline() {
         console.warn('Failed to install safe focus patch for vis.Timeline:', e);
     }
 
+    const groupsDataSet = new vis.DataSet(rawData.groups); // или просто groups, если это массив
+
     timeline = new vis.Timeline(
         container,
         new vis.DataSet(buildTimelineItems(rawData.items)),
-        new vis.DataSet(rawData.groups),
+        groupsDataSet,
         {
             zoomKey: 'ctrlKey',
             selectable: true,
@@ -405,6 +409,9 @@ function buildTimeline() {
             },
             min: new Date(-100, 0, 1), // не листать глубже 2000 года до н.э.
             max: new Date(2100, 0, 1),  // не листать дальше будущего
+            start: new Date(ACTUAL_DATE_START, 0, 1),
+            end: new Date(ACTUAL_DATE_END, 0, 1),
+            maxHeight: '800px',
             zoomMin: 10 * 1000 * 60 * 60 * 24 * 30, // минимальный зум — 10 месяцев
             locale: 'ru',
             format: {
@@ -417,21 +424,26 @@ function buildTimeline() {
                     year: ''
                 }
             },
-            stackSubgroups: true,
-            groupOrder: 'id', // отсортирует группы по алфавиту их ID
+            groupTemplate: function (group) {
+                const container = document.createElement("div");
+                const label = document.createElement("span");
+                label.innerHTML = group.content + " ";
+                container.insertAdjacentElement("afterBegin", label);
 
-            // groupTemplate: function(group) {
-            //     // Делаем красивые заголовки для панели групп
-            //     return `<div class="custom-group-label">
-            //     <span class="icon-${group.id}"></span>
-            //     <strong>${group.content.toUpperCase()}</strong>
-            // </div>`;
-            // }
-            // если в одной точке больше 10 ивентов, они соберутся в кружок
-            // cluster: {
-            //     maxItems: 10,
-            //     titleTemplate: 'Тут сидит {count} событий'
-            // }
+                const visibilityCheckbox = document.createElement("input");
+                visibilityCheckbox.type = "checkbox";
+                visibilityCheckbox.checked = true;
+                visibilityCheckbox.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    if (!this.checked) {
+                        activeGroups.delete(group.id);
+                        applyFilter();
+                        renderGroupFilters();
+                    }
+                });
+                container.insertAdjacentElement("beforeEnd", visibilityCheckbox);
+                return container;
+            }
         }
     );
 
@@ -1036,6 +1048,13 @@ function resetTimelineZoom() {
     if (!timeline || !rawData) {
         return;
     }
+
+    timeline.setWindow(
+        new Date(ACTUAL_DATE_START, 0, 1),
+        new Date(ACTUAL_DATE_END, 0, 1),
+        { animation: true }
+    );
+    return;
 
     const filtered = getFilteredItems();
     if (!filtered.length) {
@@ -2395,6 +2414,7 @@ function toTimelineItem(item) {
     const titleText = `${safeContent}\n${dateLabel}`;
     const marker = item.type === 'range' ? '' : '<span class="item-marker" aria-hidden="true"></span>';
     const className = [
+        `group-${item.group}`,
         String(item.className || '').trim(),
         isItemHighlighted(item) ? 'highlighted-item' : ''
     ].filter(Boolean).join(' ');
