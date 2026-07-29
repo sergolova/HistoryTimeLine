@@ -296,7 +296,6 @@ button:hover {
 
 .timeline-toolbar {
     flex: 1;
-    max-width: 420px;
     display: flex;
     gap: 4px;
     align-items: center;
@@ -899,4 +898,16 @@ button:hover {
     background-color: #e0f2f1;
     border-color: #009688;
     color: #004d40;
+}
+
+#findBtn {
+    white-space: nowrap;
+}
+
+.current-item-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #555;
+    font-size: 0.8em;
 }

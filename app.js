@@ -95,6 +95,11 @@ async function initApp() {
     bindCrudActions();
     loadImageCache();
 
+    const searchInput = document.getElementById('search');
+    if (searchInput) {
+        searchInput.dispatchEvent(new Event('input'));
+    }
+
     const cached = loadFromStorage();
     if (cached) {
         try {
@@ -813,12 +818,23 @@ function bindSearch() {
         }
 
         applyFilter();
+
+        // Показываем актуальное количество элементов
+        const targets = getSearchTargets();
+        const currentIndex = targets.findIndex(item => String(item.id) === String(selectedItemId));
+
+        updateFindButtonCount(currentIndex >= 0 ? currentIndex + 1 : 0, targets.length);
+
+        // Если есть текущий выбранный элемент и он входит в совпадения — отображаем его название
+        if (currentIndex >= 0 && targets[currentIndex]) {
+            updateCurrentItemLabel(targets[currentIndex].content);
+        } if (currentIndex === -1 && targets.length > 1) {
+            updateCurrentItemLabel(targets[0].content);
+        } else {
+            updateCurrentItemLabel('');
+        }
     }
-
-    searchInput.addEventListener('input', () => {
-
-    });
-
+    
     clearBtn.addEventListener('click', () => {
         searchInput.value = '';
         clearBtn.setAttribute('hidden', '');
@@ -1019,7 +1035,113 @@ function setAllGroupsVisibility(isVisible) {
     renderGroupFilters();
 }
 
+function findElement() {
+    if (!timeline || !rawData) {
+        return;
+    }
+
+    const items = getSearchTargets();
+
+    if (!items.length) {
+        updateFileStatus('Совпадающие элементы не найдены', true);
+        updateFindButtonCount(0, 0);
+        updateCurrentItemLabel('');
+        return;
+    }
+
+    const currentIndex = items.findIndex(item => String(item.id) === String(selectedItemId));
+    const nextIndex = (currentIndex + 1) % items.length;
+    const nextItem = items[nextIndex];
+
+    selectedItemId = nextItem.id;
+
+    timeline.setSelection([selectedItemId]);
+    centerOnItemWithoutZoom(selectedItemId);
+    showDetails(selectedItemId);
+    updateSelectionGuideLines();
+
+    scrollToItemY(selectedItemId);
+    updateFindButtonCount(nextIndex + 1, items.length);
+    updateCurrentItemLabel(nextItem.content);
+}
+
+function scrollToItemY(itemId) {
+    if (!timelineWrapEl || !itemId) return;
+
+    // Даем небольшую задержку (requestAnimationFrame), чтобы vis.js успел
+    // обновить DOM и применить выделение .vis-selected
+    requestAnimationFrame(() => {
+        // Находим DOM-элемент карточки события на таймлайне
+        const itemEl = timelineWrapEl.querySelector(`[data-item-id="${itemId}"]`)
+            || timelineWrapEl.querySelector(`.vis-item[data-id="${itemId}"]`);
+
+        if (!itemEl) return;
+
+        // Находим прокручиваемый вертикальный контейнер vis.js
+        const scrollContainer = timelineWrapEl.querySelector('.vis-panel.vis-center')
+            || timelineWrapEl.querySelector('.vis-vertical-scroll');
+
+        if (scrollContainer) {
+            const itemRect = itemEl.getBoundingClientRect();
+            const containerRect = scrollContainer.getBoundingClientRect();
+
+            // Проверяем, выходить ли элемент за верхний или нижний край видимой области
+            const isAbove = itemRect.top < containerRect.top;
+            const isBelow = itemRect.bottom > containerRect.bottom;
+
+            if (isAbove || isBelow) {
+                const targetScrollTop = scrollContainer.scrollTop
+                    + (itemRect.top - containerRect.top)
+                    - (containerRect.height / 2)
+                    + (itemRect.height / 2);
+
+                scrollContainer.scrollTo({
+                    top: targetScrollTop,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            // Если внутренний скролл не найден, плавно скроллим сам DOM-элемент в поле зрения
+            itemEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+}
+
+function getSearchTargets() {
+    let items = getFilteredItems();
+    if (highlightQuery) {
+        items = items.filter(isItemHighlighted);
+    }
+    return items;
+}
+
+function updateFindButtonCount(current = 0, total = 0) {
+    const findBtn = document.getElementById('findBtn');
+    if (!findBtn) return;
+
+    if (total > 0 && (searchQuery || highlightQuery)) {
+        const displayIndex = current > 0 ? current : 1;
+        findBtn.textContent = `Перейти (${displayIndex}/${total})`;
+    } else {
+        findBtn.textContent = 'Перейти';
+    }
+}
+
+function updateCurrentItemLabel(itemContent = '') {
+    const labelEl = document.getElementById('currentFindItemLabel');
+    if (!labelEl) return;
+
+    if (itemContent && (searchQuery || highlightQuery)) {
+        labelEl.textContent = itemContent;
+        labelEl.title = itemContent;
+    } else {
+        labelEl.textContent = '';
+        labelEl.title = '';
+    }
+}
+
 function bindCrudActions() {
+    document.getElementById('findBtn').addEventListener('click', findElement);
     document.getElementById('resetZoomBtn').addEventListener('click', resetTimelineZoom);
     document.getElementById('addItemBtn').addEventListener('click', () => openItemDialog('create'));
     document.getElementById('editItemBtn').addEventListener('click', () => openItemDialog('edit'));
