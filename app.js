@@ -768,7 +768,7 @@ function applyFilter() {
 }
 
 function getFilteredItems() {
-    return rawData.items.filter(item => {
+    return rawData?.items.filter(item => {
         // group visibility
         if (!activeGroups.has(item.group)) {
             return false;
@@ -820,7 +820,7 @@ function bindSearch() {
         applyFilter();
 
         // Показываем актуальное количество элементов
-        const targets = getSearchTargets();
+        const targets = getSearchTargets() ?? [];
         const currentIndex = targets.findIndex(item => String(item.id) === String(selectedItemId));
 
         updateFindButtonCount(currentIndex >= 0 ? currentIndex + 1 : 0, targets.length);
