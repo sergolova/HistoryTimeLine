@@ -33,15 +33,11 @@
                 <div class="dropdown-menu">
                     <button id="exportStorageBtn" type="button" class="dropdown-item">
                         <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                        Экспорт localStorage
+                        Сохранить...
                     </button>
                     <button id="importStorageBtn" type="button" class="dropdown-item">
                         <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
-                        Импорт файла
-                    </button>
-                    <button id="importTextBtn" type="button" class="dropdown-item">
-                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 2h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 1H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
-                        Импорт из буфера
+                        Загрузить...
                     </button>
                     <div class="dropdown-divider"></div>
                     <button id="resetStorageBtn" type="button" class="dropdown-item danger">
@@ -90,7 +86,7 @@
         </aside>
 
         <!-- Главная область: Таймлайн -->
-        <main class="main card">
+        <main class="main">
             <div class="title-row">
                 <div class="timeline-toolbar">
                     <div class="timeline-search-wrapper">
@@ -120,6 +116,10 @@
                     <button id="addItemBtn" type="button" class="btn btn-sm btn-accent">
                         <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
                         Событие
+                    </button>
+                    <button id="importTextBtn" type="button" class="btn btn-sm">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                         из буфера
                     </button>
                     <button id="editItemBtn" type="button" class="btn btn-sm" title="Редактировать">
                         <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
