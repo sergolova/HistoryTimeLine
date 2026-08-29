@@ -3,70 +3,133 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Историческая шкала</title>
+    <title>Историческая хроника</title>
     <link rel="stylesheet" href="libs/vis-timeline-8.5.1/dist/vis-timeline-graph2d.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b261d'><path d='M13 3a9 9 0 0 0-8.94 8H2l3.5 3.5L9 11H6.06A7 7 0 1 1 13 18a6.96 6.96 0 0 1-4.95-2.05l-1.41 1.41A9 9 0 1 0 13 3zm-1 5v5l4 2 .75-1.23-3.25-1.92V8H12z'/></svg>">
 </head>
 
 <body>
-<div class="app-shell">
-    <header class="app-header">
-        <div class="header-row">
-            <div class="header-column">
-                <img src="favicon.png" alt="Логотип" class="logo">
-                <h1>Историческая шкала</h1>
-            </div>
-
-            <div class="file-actions">
-                <button id="exportStorageBtn" type="button">Экспорт localStorage</button>
-                <button id="importStorageBtn" type="button">Импорт localStorage</button>
-                <button id="importTextBtn" type="button">Импорт из буфера</button>
-                <button id="resetStorageBtn" type="button">Сбросить localStorage</button>
+<header class="app-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13 3a9 9 0 0 0-8.94 8H2l3.5 3.5L9 11H6.06A7 7 0 1 1 13 18a6.96 6.96 0 0 1-4.95-2.05l-1.41 1.41A9 9 0 1 0 13 3zm-1 5v5l4 2 .75-1.23-3.25-1.92V8H12z"/>
+            </svg>
+            <div class="clickable-logo" id="clickableLogo">
+                <h1 class="brand-title h4 mb-0">.</h1>
+                <small class="text-muted small-subtitle">.</small>
             </div>
         </div>
-        <div id="fileStatus" class="file-status">Источник: встроенный data.json</div>
-    </header>
 
-    <div class="layout">
-        <aside class="left-panel card">
-            <div class="section-title">Группы (видимость)</div>
-            <div class="manager-form manager-form-row group-visibility-actions">
-                <button id="showAllGroupsBtn" type="button">Показать</button>
-                <button id="hideAllGroupsBtn" type="button">Скрыть</button>
-                <button id="invertGroupsBtn" type="button">Инверт.</button>
+        <div class="header-controls">
+            <!-- Выпадающее меню "Данные" -->
+            <div class="dropdown" id="dataDropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dataMenuBtn">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 12v7H5v-7h14m1.5-9h-17A1.5 1.5 0 0 0 2 4.5v15A1.5 1.5 0 0 0 3.5 21h17a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 20.5 3M12 5a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 12 5m-6 0a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 6 5z"/></svg>
+                    <span>Данные</span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+                </button>
+                <div class="dropdown-menu">
+                    <button id="exportStorageBtn" type="button" class="dropdown-item">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                        Экспорт localStorage
+                    </button>
+                    <button id="importStorageBtn" type="button" class="dropdown-item">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+                        Импорт файла
+                    </button>
+                    <button id="importTextBtn" type="button" class="dropdown-item">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 2h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 1H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+                        Импорт из буфера
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button id="resetStorageBtn" type="button" class="dropdown-item danger">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                        Сбросить всё
+                    </button>
+                </div>
             </div>
+        </div>
+    </div>
+    <div id="fileStatus" class="file-status">Источник: встроенный data.json</div>
+</header>
+
+<div class="app-shell">
+    <div class="layout">
+        <!-- Левая панель: Группы и Теги -->
+        <aside class="left-panel card">
+            <div class="section-header">
+                <div class="section-title">Группы</div>
+                <button id="addGroupBtn" type="button" class="btn btn-sm" title="Добавить новую группу">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                </button>
+            </div>
+
+            <div class="group-visibility-actions">
+                <button id="showAllGroupsBtn" type="button" class="btn btn-xs" title="Показать все">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+                    Все
+                </button>
+                <button id="hideAllGroupsBtn" type="button" class="btn btn-xs" title="Скрыть все">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27z"/></svg>
+                    Скрыть
+                </button>
+                <button id="invertGroupsBtn" type="button" class="btn btn-xs" title="Инвертировать">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
+                </button>
+            </div>
+
             <div id="groupFilters" class="group-filters"></div>
+
             <div class="section-title">Теги</div>
-            <div class="manager-form manager-form-row">
-                <label for="tagSearchInput" class="visually-hidden">Поиск тегов</label>
+            <div class="search-box">
                 <input id="tagSearchInput" placeholder="Поиск тегов...">
             </div>
-            <div id="tags"></div>
+            <div id="tags" class="tags-container"></div>
         </aside>
 
+        <!-- Главная область: Таймлайн -->
         <main class="main card">
             <div class="title-row">
                 <div class="timeline-toolbar">
-                    <label for="search" class="visually-hidden">Поиск по событиям</label>
                     <div class="timeline-search-wrapper">
-                        <input id="search" class="timeline-search" placeholder="Поиск по событиям...">
-                        <button id="clearSearch" class="search-clear-btn" type="button" aria-label="Очистить поиск" hidden>&times;</button>
+                        <svg class="search-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        <input id="search" class="timeline-search" placeholder="Поиск событий...">
+                        <button id="clearSearch" class="search-clear-btn" type="button" aria-label="Очистить" hidden>&times;</button>
                     </div>
-                    <input type="checkbox" id="highlightSearchCheckbox" class="filter-checkbox">
-                    <label for="highlightSearchCheckbox" class="">Подсветка</label>
-                    <div class="find-bar-container" style="display: flex; align-items: center; gap: 10px;">
-                        <button id="findBtn" type="button" style="white-space: nowrap; flex-shrink: 0;">Перейти</button>
+
+                    <label class="checkbox-label" title="Подсвечивать найденные">
+                        <input type="checkbox" id="highlightSearchCheckbox" class="filter-checkbox">
+                        <span>Подсветка</span>
+                    </label>
+
+                    <div class="find-bar-container">
+                        <button id="findBtn" type="button" class="btn btn-sm">
+                            <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                            Найти
+                        </button>
                         <div id="currentFindItemLabel" class="current-item-label"></div>
                     </div>
                 </div>
+
                 <div class="timeline-actions">
-                    <button id="resetZoomBtn" type="button">Сброс масштаба</button>
-                    <button id="addItemBtn" type="button">+ Событие</button>
-                    <button id="editItemBtn" type="button">Редактировать</button>
-                    <button id="deleteItemBtn" type="button">Удалить</button>
+                    <button id="resetZoomBtn" type="button" class="btn btn-sm" title="Сбросить масштаб">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                    </button>
+                    <button id="addItemBtn" type="button" class="btn btn-sm btn-accent">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                        Событие
+                    </button>
+                    <button id="editItemBtn" type="button" class="btn btn-sm" title="Редактировать">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                    </button>
+                    <button id="deleteItemBtn" type="button" class="btn btn-sm btn-danger" title="Удалить">
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                    </button>
                 </div>
             </div>
+
             <div id="timelineWrap" class="timeline-wrap">
                 <div id="timeline"></div>
                 <div id="hoverLine" class="timeline-line hover-line"></div>
@@ -80,22 +143,24 @@
             </div>
         </main>
 
+        <!-- Правая панель: Детали события -->
         <aside class="right-panel card">
             <div class="section-title">Детали события</div>
             <div id="details" class="details-empty">
-                Выберите событие на таймлайне
+                Выберите событие на таймлайне для просмотра подробной информации
             </div>
         </aside>
     </div>
 </div>
 
-<dialog id="itemDialog">
+<!-- Дилог редактирования события -->
+<dialog id="itemDialog" class="historic-dialog">
     <form id="itemForm" method="dialog">
         <div class="dialog-header">
             <h2 id="itemDialogTitle">Событие</h2>
             <div class="dialog-header-actions">
-                <button id="saveItemBtn" type="submit">Сохранить</button>
-                <button id="closeItemDialogBtn" type="button" class="ghost-btn">Закрыть</button>
+                <button id="saveItemBtn" type="submit" class="btn btn-accent">Сохранить</button>
+                <button id="closeItemDialogBtn" type="button" class="btn ghost-btn">Закрыть</button>
             </div>
         </div>
 
@@ -115,17 +180,17 @@
             <label>
                 Тип
                 <select id="itemTypeInput">
-                    <option value="point">point</option>
-                    <option value="range">range</option>
+                    <option value="point">Точка (point)</option>
+                    <option value="range">Интервал (range)</option>
                 </select>
             </label>
             <label>
-                Начало (Г / Г-ММ / Г-ММ-ДД, год 0..9999)
+                Начало (Г / Г-ММ / Г-ММ-ДД)
                 <input id="itemStartInput" placeholder="456 или 456-06 или 456-06-27" required>
             </label>
             <label>
-                Конец для range (Г / Г-ММ / Г-ММ-ДД, год 0..9999)
-                <input id="itemEndInput" placeholder="0 или 1721-09-10">
+                Конец интервала
+                <input id="itemEndInput" placeholder="1721-09-10">
             </label>
             <label class="full-width">
                 Описание
@@ -144,24 +209,54 @@
                 </label>
             </div>
         </div>
-
     </form>
 </dialog>
 
-<dialog id="importDialog">
+<!-- Диалог управления группами (NEW) -->
+<dialog id="groupDialog" class="historic-dialog">
+    <form id="groupForm" method="dialog">
+        <div class="dialog-header">
+            <h2 id="groupDialogTitle">Редактор группы</h2>
+            <div class="dialog-header-actions">
+                <button id="saveGroupBtn" type="submit" class="btn btn-accent">Сохранить</button>
+                <button id="deleteGroupBtn" type="button" class="btn btn-danger">Удалить</button>
+                <button id="closeGroupDialogBtn" type="button" class="btn ghost-btn">Закрыть</button>
+            </div>
+        </div>
+        <div class="dialog-grid">
+            <label>
+                Идентификатор (ID)
+                <input id="groupIdInput" placeholder="например: wars" required>
+            </label>
+            <label>
+                Название группы
+                <input id="groupTitleInput" placeholder="например: Войны и конфликты" required>
+            </label>
+            <label class="full-width">
+                Цвет группы
+                <div class="color-picker-row">
+                    <input type="color" id="groupColorInput" value="#8b261d">
+                    <input type="text" id="groupColorTextInput" placeholder="#8b261d">
+                </div>
+            </label>
+        </div>
+    </form>
+</dialog>
+
+<!-- Диалог импорта JSON -->
+<dialog id="importDialog" class="historic-dialog">
     <form id="importForm" method="dialog">
         <div class="dialog-header">
             <h2>Импорт JSON</h2>
             <div class="dialog-header-actions">
-                <button id="copyExample">Копировать шаблон</button>
-                <button id="applyImportBtn" type="submit">Добавить</button>
-                <button id="closeImportDialogBtn" type="button" class="ghost-btn">Закрыть</button>
+                <button id="copyExample" type="button" class="btn">Шаблон</button>
+                <button id="applyImportBtn" type="submit" class="btn btn-accent">Импортировать</button>
+                <button id="closeImportDialogBtn" type="button" class="btn ghost-btn">Закрыть</button>
             </div>
         </div>
-
         <label class="full-width">
-            Вставьте JSON (объект события, массив событий или объект с полем items)
-            <textarea id="importTextInput" rows="12" placeholder='{"id":"eternal-peace","group":"events","content":"Вечный мир","start":"1686-05-06","type":"box"}'></textarea>
+            Вставьте JSON (массив или объект с событиями)
+            <textarea id="importTextInput" rows="12" placeholder='{"id":"eternal-peace","group":"events","content":"Вечный мир","start":"1686-05-06"}'></textarea>
         </label>
     </form>
 </dialog>
@@ -169,7 +264,17 @@
 <input id="stateFileInput" type="file" accept="application/json,.json" class="visually-hidden">
 
 <script src="libs/vis-timeline-8.5.1/dist/vis-timeline-graph2d.min.js"></script>
-<script src="app.js"></script>
+<!-- Утилиты и сервисы (не зависят от других модулей) -->
+<script src="DateUtils.js"></script>
+<script src="StorageService.js"></script>
 
+<!-- Модули с зависимостями -->
+<script src="WikipediaService.js"></script>
+<script src="DataManager.js"></script>
+<script src="TimelineComponent.js"></script>
+<script src="UIController.js"></script>
+
+<!-- Главный входной скрипт запускается последним -->
+<script src="main.js"></script>
 </body>
 </html>

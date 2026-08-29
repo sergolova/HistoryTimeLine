@@ -393,31 +393,40 @@ function buildTimeline() {
             zoomKey: 'ctrlKey',
             selectable: true,
             verticalScroll: true,
-            orientation: {
-                axis: 'both',
-                item: 'bottom'  
+
+            // --- НАСТРОЙКИ КОМПАКТНОСТИ ---
+            stack: true,                 // Оставьте true, если элементы должны обходить друг друга, но ужмите отступы (см. margin)
+            stackSubgroups: true,
+            order: function (a, b) {
+                return (a.start - b.start) || ((b.end || b.start) - (a.end || a.start));
             },
             margin: {
                 item: {
-                    horizontal: 4,
-                    vertical: 2
+                    horizontal: 1,       // Минимальный зазор между плашками по горизонтали (px)
+                    vertical: 1          // Минимальный зазор по вертикали (px)
                 },
-                axis: 4
+                axis: 2                  // Отступ от оси времени (px)
             },
-            min: new Date(-100, 0, 1), // не листать глубже 2000 года до н.э.
-            max: new Date(2100, 0, 1),  // не листать дальше будущего
+            // ------------------------------
+
+            orientation: {
+                axis: 'both',
+                item: 'bottom'
+            },
+            min: new Date(-100, 0, 1),
+            max: new Date(2100, 0, 1),
             start: new Date(ACTUAL_DATE_START, 0, 1),
             end: new Date(ACTUAL_DATE_END, 0, 1),
             maxHeight: '800px',
-            zoomMin: 10 * 1000 * 60 * 60 * 24 * 30, // минимальный зум — 10 месяцев
+            zoomMin: 10 * 1000 * 60 * 60 * 24 * 30,
             locale: 'ru',
             format: {
                 minorLabels: {
-                    month: 'MMM', // Отобразит "Янв", "Фев" на мелкой сетке
+                    month: 'MMM',
                     year: 'YYYY г.'
                 },
                 majorLabels: {
-                    month: 'YYYY г.', // На крупной сетке покажет год
+                    month: 'YYYY г.',
                     year: ''
                 }
             },
@@ -1840,9 +1849,9 @@ function escapeHtml(value) {
         .replaceAll("'", '&#39;');
 }
 
-function formatDateRange(item) {
-    const startLabel = formatDateValue(item.start);
-    const endLabel = formatDateValue(item.end);
+function formatDateRange(item, options = {}) {
+    const startLabel = formatDateValue(item.start, options);
+    const endLabel = formatDateValue(item.end, options);
 
     if (startLabel && endLabel) {
         const dur = computeDurationString(item);
@@ -1918,7 +1927,7 @@ function createUtcDateWithYear(year, monthIndex, day) {
     return dt;
 }
 
-function formatDateValue(value) {
+function formatDateValue(value, options = {}) {
     const raw = String(value || '').trim();
     if (!raw) {
         return '';
@@ -1929,12 +1938,13 @@ function formatDateValue(value) {
         return raw;
     }
 
+    const yearName = options?.yearName !== false ? ' г.' : '';
     const year = Number(match[1]);
     const month = match[2] ? Number(match[2]) : null;
     const day = match[3] ? Number(match[3]) : null;
 
     if (!month) {
-        return `${year} г.`;
+        return `${year}${yearName}`;
     }
 
     let monthName = new Intl.DateTimeFormat('ru-RU', {month: 'short'})
@@ -1943,7 +1953,8 @@ function formatDateValue(value) {
     monthName = monthName.charAt(0).toUpperCase() + monthName.slice(1).replace('.', '');
 
     if (!day) {
-        return `${monthName} ${year} г.`;
+        monthName = options?.dayMonth !== false ? `${monthName} ` : '';
+        return `${monthName}${year}${yearName}`;
     }
 
     let dayMonth = new Intl.DateTimeFormat('ru-RU', {
@@ -1953,8 +1964,9 @@ function formatDateValue(value) {
     }).format(createUtcDateWithYear(year, month - 1, day));
 
     dayMonth = dayMonth.replace('.', '');
+    dayMonth = options?.dayMonth !== false ? `${dayMonth} ` : '';
 
-    return `${dayMonth} ${year} г.`;
+    return `${dayMonth}${year}${yearName}`;
 }
 
 function normalizeFlexibleDate(value) {
@@ -2509,7 +2521,8 @@ function getTimelineXGeometry() {
 }
 
 function toTimelineItem(item) {
-    const dateLabel = formatDateRange(item);
+    const fullDate = item.type === 'point';
+    const dateLabel = formatDateRange(item, {yearName: fullDate, dayMonth: fullDate});
     const safeContent = String(item.content || item.id || 'Без названия');
     const titleText = `${safeContent}\n${dateLabel}`;
     const marker = item.type === 'range' ? '' : '<span class="item-marker" aria-hidden="true"></span>';
@@ -2526,6 +2539,7 @@ function toTimelineItem(item) {
         className: className || undefined,
         // include data-item-id on the inner wrapper so we can reliably find the DOM node later
         content: `<div class="item-label" data-item-id="${escapeHtml(String(item.id))}"><div class="item-title-row">${marker}<div class="item-title">${escapeHtml(safeContent)}</div></div><div class="item-date">${escapeHtml(dateLabel)}</div></div>`,
+        type: item.type,
         title: ''//titleText
     };
 }
@@ -2631,4 +2645,74 @@ async function getSmartWikipediaUrl(content) {
 
     // If there isn't an exact article or the API is down, we provide a link to the search page
     return `https://ru.wikipedia.org/w/index.php?search=${encodeURIComponent(query)}`;
+}
+
+const dataDropdown = document.getElementById('dataDropdown');
+const dataMenuBtn = document.getElementById('dataMenuBtn');
+
+if (dataMenuBtn && dataDropdown) {
+    dataMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dataDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!dataDropdown.contains(e.target)) {
+            dataDropdown.classList.remove('open');
+        }
+    });
+}
+
+// --- УПРАВЛЕНИЕ РЕДАКТОРОМ ГРУПП (MODAL) ---
+const groupDialog = document.getElementById('groupDialog');
+const addGroupBtn = document.getElementById('addGroupBtn');
+const closeGroupDialogBtn = document.getElementById('closeGroupDialogBtn');
+const groupForm = document.getElementById('groupForm');
+const groupColorInput = document.getElementById('groupColorInput');
+const groupColorTextInput = document.getElementById('groupColorTextInput');
+
+// Связка инпутов цвета
+if (groupColorInput && groupColorTextInput) {
+    groupColorInput.addEventListener('input', (e) => {
+        groupColorTextInput.value = e.target.value;
+    });
+    groupColorTextInput.addEventListener('input', (e) => {
+        groupColorInput.value = e.target.value;
+    });
+}
+
+// Открытие для создания новой группы
+if (addGroupBtn && groupDialog) {
+    addGroupBtn.addEventListener('click', () => {
+        document.getElementById('groupDialogTitle').textContent = 'Новая группа';
+        document.getElementById('groupIdInput').value = '';
+        document.getElementById('groupIdInput').disabled = false;
+        document.getElementById('groupTitleInput').value = '';
+        groupColorInput.value = '#8b261d';
+        groupColorTextInput.value = '#8b261d';
+        document.getElementById('deleteGroupBtn').style.display = 'none';
+        groupDialog.showModal();
+    });
+}
+
+// Закрытие диалога
+if (closeGroupDialogBtn && groupDialog) {
+    closeGroupDialogBtn.addEventListener('click', () => {
+        groupDialog.close();
+    });
+}
+
+// Функция для вызова редактирования существующей группы (вызывайте её при клике на иконку в фильтре)
+function openGroupEditor(groupObj) {
+    document.getElementById('groupDialogTitle').textContent = 'Редактировать группу';
+    document.getElementById('groupIdInput').value = groupObj.id;
+    document.getElementById('groupIdInput').disabled = true; // ID меняем осторожно
+    document.getElementById('groupTitleInput').value = groupObj.content || groupObj.title || '';
+
+    const color = groupObj.color || '#8b261d';
+    groupColorInput.value = color;
+    groupColorTextInput.value = color;
+
+    document.getElementById('deleteGroupBtn').style.display = 'inline-flex';
+    groupDialog.showModal();
 }
