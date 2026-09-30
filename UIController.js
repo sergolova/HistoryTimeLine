@@ -682,12 +682,8 @@ class UIController {
         }
 
         const firstItem = groupItems[0];
-        const startDate = DateUtils.toVisDate(firstItem.start, false);
-        if (!(startDate instanceof Date)) return;
-
         this.data.selectedItemId = firstItem.id;
         this.timeline.timeline.setSelection([firstItem.id]);
-        this.centerOnItemWithoutZoom(firstItem.id);
         this.showDetails(firstItem.id);
         this.timeline.updateSelectionGuideLines(this.data);
         this.scrollToItemY(firstItem.id);

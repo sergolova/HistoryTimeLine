@@ -84,10 +84,13 @@ class TimelineComponent {
         if (!this.timeline || !state) return;
         try {
             this.timeline.setWindow(state.start, state.end, { animation: false });
-            const scrollEl = this.timeline.body?.dom?.verticalScroll;
-            if (scrollEl) {
-                scrollEl.scrollTop = state.scrollTop;
-            }
+            // Восстанавливаем вертикальную прокрутку после setWindow через rAF
+            requestAnimationFrame(() => {
+                const scrollEl = this.timeline.body?.dom?.verticalScroll;
+                if (scrollEl) {
+                    scrollEl.scrollTop = state.scrollTop;
+                }
+            });
         } catch (e) {
             // ignore restore errors
         }
