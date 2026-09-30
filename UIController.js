@@ -257,22 +257,23 @@ class UIController {
             const itemEl = this.timelineWrapEl.querySelector(`[data-item-id="${itemId}"]`)
                 || this.timelineWrapEl.querySelector(`.vis-item[data-id="${itemId}"]`);
             if (!itemEl) return;
-            const scrollContainer = this.timelineWrapEl.querySelector('.vis-panel.vis-center')
-                || this.timelineWrapEl.querySelector('.vis-vertical-scroll');
+
+            // Ищем контейнер вертикальной прокрутки
+            const scrollContainer = this.timelineWrapEl.querySelector('.vis-vertical-scroll')
+                || this.timelineWrapEl.querySelector('.vis-panel.vis-center')
+                || this.timelineWrapEl.querySelector('.vis-panel');
+
             if (scrollContainer) {
                 const itemRect = itemEl.getBoundingClientRect();
                 const containerRect = scrollContainer.getBoundingClientRect();
-                const isAbove = itemRect.top < containerRect.top;
-                const isBelow = itemRect.bottom > containerRect.bottom;
-                if (isAbove || isBelow) {
-                    const targetScrollTop = scrollContainer.scrollTop
-                        + (itemRect.top - containerRect.top)
-                        - (containerRect.height / 2)
-                        + (itemRect.height / 2);
-                    scrollContainer.scrollTo({top: targetScrollTop, behavior: 'smooth'});
-                }
+                // Всегда прокручиваем к элементу, чтобы он был виден
+                const targetScrollTop = scrollContainer.scrollTop
+                    + (itemRect.top - containerRect.top)
+                    - (containerRect.height / 2)
+                    + (itemRect.height / 2);
+                scrollContainer.scrollTo({top: targetScrollTop, behavior: 'smooth'});
             } else {
-                itemEl.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+                itemEl.scrollIntoView({behavior: 'smooth', block: 'center'});
             }
         });
     }
