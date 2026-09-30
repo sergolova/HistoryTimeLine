@@ -160,9 +160,13 @@ class TimelineComponent {
         this.timeline.on('doubleClick', props => {
             if (props.item && this.callbacks.onDoubleClick) this.callbacks.onDoubleClick(props.item);
         });
-        this.timeline.on('rangechanged', () => {
+        let scrollTimeout = null;
+        this.timeline.on('changed', () => {
             this.updateSelectionGuideLines(dataManager);
-            if (this.callbacks.onRangeChanged) this.callbacks.onRangeChanged();
+            if (this.callbacks.onRangeChanged) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => this.callbacks.onRangeChanged(), 50);
+            }
         });
 
         this.bindHoverGuides(dataManager);

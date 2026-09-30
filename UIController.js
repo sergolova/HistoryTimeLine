@@ -607,7 +607,11 @@ class UIController {
             text.className = 'group-name';
             text.innerHTML = `${this.escapeHtml(group.content)} <span class="group-id-color" style="color:${groupColor}">(${this.escapeHtml(group.id)})</span>`;
             text.title = 'Нажмите, чтобы показать на таймлайне';
-            text.addEventListener('click', () => this.scrollToGroup(group.id));
+            text.addEventListener('click', (event) => {
+                event.stopPropagation();
+                event.preventDefault();
+                this.scrollToGroup(group.id);
+            });
 
             const actions = document.createElement('span');
             actions.className = 'group-filter-actions';
