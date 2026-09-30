@@ -1,4 +1,4 @@
- class WikipediaService {
+class WikipediaService {
     constructor(storageService) {
         this.storageService = storageService;
         this.imageCache = this.storageService.loadImageCache();

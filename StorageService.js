@@ -1,4 +1,4 @@
- class StorageService {
+class StorageService {
     constructor() {
         this.STORAGE_KEY = 'historyTimeline:data:v1';
         this.IMAGE_CACHE_KEY = 'historyTimeline:images:v1';

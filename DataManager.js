@@ -1,4 +1,4 @@
- class DataManager {
+class DataManager {
     static GROUP_COLORS = {
         wars: '#c62828',
         states: '#4a148c',
@@ -131,20 +131,20 @@
         this.rawData.tags = [...next].sort((a, b) => a.localeCompare(b, 'ru'));
     }
 
-     getTagUsageMap() {
-         const map = new Map();
-         (this.rawData?.items || []).forEach(item => {
-             (item.tags || []).forEach(tag => {
-                 map.set(tag, (map.get(tag) || 0) + 1);
-             });
-         });
-         return map;
-     }
+    getTagUsageMap() {
+        const map = new Map();
+        (this.rawData?.items || []).forEach(item => {
+            (item.tags || []).forEach(tag => {
+                map.set(tag, (map.get(tag) || 0) + 1);
+            });
+        });
+        return map;
+    }
 
-     deleteGroup(groupId) {
-         if (!this.rawData) return;
-         this.rawData.groups = this.rawData.groups.filter(g => g.id !== groupId);
-         this.rawData.items = this.rawData.items.filter(i => i.group !== groupId);
-         this.activeGroups.delete(groupId);
-     }
+    deleteGroup(groupId) {
+        if (!this.rawData) return;
+        this.rawData.groups = this.rawData.groups.filter(g => g.id !== groupId);
+        this.rawData.items = this.rawData.items.filter(i => i.group !== groupId);
+        this.activeGroups.delete(groupId);
+    }
 }

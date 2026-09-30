@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const uiController = new UIController(dataManager, timelineComponent, storageService, wikiService);
     uiController.init();
 
-    // Dropdown toggle
+    // Переключение выпадающего меню
     const dataDropdown = document.getElementById('dataDropdown');
     const dataMenuBtn = document.getElementById('dataMenuBtn');
     if (dataMenuBtn && dataDropdown) {

@@ -1,4 +1,4 @@
- class TimelineComponent {
+class TimelineComponent {
     constructor(containerEl, timelineWrapEl, options = {}) {
         this.containerEl = containerEl;
         this.timelineWrapEl = timelineWrapEl;
@@ -76,7 +76,7 @@
             try {
                 this.timeline.destroy();
             } catch (e) {
-                // ignore destroy errors (vis-timeline DOM issue on re-render)
+                // vis-timeline может бросать ошибку при destroy — игнорируем
             }
             this.timeline = null;
         }
@@ -142,7 +142,6 @@
                     });
                     container.appendChild(cb);
 
-                    // Возвращаем именно созданный контейнер, а не элемент по умолчанию
                     return container;
                 }
             }
