@@ -73,7 +73,7 @@ class TimelineComponent {
         if (!this.timeline) return null;
         try {
             const window = this.timeline.getWindow();
-            const scrollTop = this.timeline.getScrollTop ? this.timeline.getScrollTop() : 0;
+            const scrollTop = this.timeline.body?.dom?.verticalScroll?.scrollTop || 0;
             return { start: window.start, end: window.end, scrollTop };
         } catch (e) {
             return null;
@@ -84,8 +84,9 @@ class TimelineComponent {
         if (!this.timeline || !state) return;
         try {
             this.timeline.setWindow(state.start, state.end, { animation: false });
-            if (this.timeline.setScrollTop) {
-                this.timeline.setScrollTop(state.scrollTop);
+            const scrollEl = this.timeline.body?.dom?.verticalScroll;
+            if (scrollEl) {
+                scrollEl.scrollTop = state.scrollTop;
             }
         } catch (e) {
             // ignore restore errors
