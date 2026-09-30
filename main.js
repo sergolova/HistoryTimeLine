@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         onGroupToggle: (groupId) => {
             dataManager.activeGroups.delete(groupId);
             uiController.applyFilter();
+            uiController.renderGroupFilters();
         }
     });
 
