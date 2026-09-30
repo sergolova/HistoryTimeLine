@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             dataManager.activeGroups.delete(groupId);
             uiController.applyFilter();
             uiController.renderGroupFilters();
+        },
+        onRangeChanged: () => {
+            uiController.updateVisibleGroups();
         }
     });
 

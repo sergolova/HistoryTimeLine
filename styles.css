@@ -751,6 +751,20 @@ body {
 }
 
 /* === ГРУППЫ === */
+.group-filter-item.group-visible {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+}
+
+.group-name {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.group-name:hover {
+    color: var(--accent);
+}
+
 .group-filter-actions {
     display: flex;
     gap: 2px;

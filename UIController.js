@@ -585,6 +585,7 @@ class UIController {
         (this.data.rawData?.groups || []).forEach(group => {
             const label = document.createElement('label');
             label.className = 'group-filter-item';
+            label.dataset.groupId = group.id;
 
             const left = document.createElement('span');
             left.className = 'group-filter-left';
@@ -603,7 +604,10 @@ class UIController {
 
             const groupColor = DataManager.GROUP_COLORS[group.id] || 'var(--text)';
             const text = document.createElement('span');
+            text.className = 'group-name';
             text.innerHTML = `${this.escapeHtml(group.content)} <span class="group-id-color" style="color:${groupColor}">(${this.escapeHtml(group.id)})</span>`;
+            text.title = 'Нажмите, чтобы показать на таймлайне';
+            text.addEventListener('click', () => this.scrollToGroup(group.id));
 
             const actions = document.createElement('span');
             actions.className = 'group-filter-actions';
@@ -636,6 +640,53 @@ class UIController {
             label.append(left, actions);
             this.groupFiltersEl.append(label);
         });
+    }
+
+    updateVisibleGroups() {
+        if (!this.timeline.timeline || !this.data.rawData) return;
+
+        const visibleItems = this.timeline.timeline.getVisibleItems();
+        const visibleGroups = new Set();
+
+        visibleItems.forEach(itemId => {
+            const item = this.data.findItemById(itemId);
+            if (item) {
+                visibleGroups.add(item.group);
+            }
+        });
+
+        this.groupFiltersEl.querySelectorAll('.group-filter-item').forEach(el => {
+            const groupId = el.dataset.groupId;
+            if (visibleGroups.has(groupId)) {
+                el.classList.add('group-visible');
+            } else {
+                el.classList.remove('group-visible');
+            }
+        });
+    }
+
+    scrollToGroup(groupId) {
+        if (!this.timeline.timeline || !this.data.rawData) return;
+
+        const groupItems = this.data.rawData.items.filter(
+            item => item.group === groupId && this.data.activeGroups.has(item.group)
+        );
+
+        if (!groupItems.length) {
+            this.showToast('Нет видимых событий в этой группе', 'info');
+            return;
+        }
+
+        const firstItem = groupItems[0];
+        const startDate = DateUtils.toVisDate(firstItem.start, false);
+        if (!(startDate instanceof Date)) return;
+
+        this.data.selectedItemId = firstItem.id;
+        this.timeline.timeline.setSelection([firstItem.id]);
+        this.centerOnItemWithoutZoom(firstItem.id);
+        this.showDetails(firstItem.id);
+        this.timeline.updateSelectionGuideLines(this.data);
+        this.scrollToItemY(firstItem.id);
     }
 
     setAllGroupsVisibility(isVisible) {

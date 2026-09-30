@@ -162,6 +162,7 @@ class TimelineComponent {
         });
         this.timeline.on('rangechanged', () => {
             this.updateSelectionGuideLines(dataManager);
+            if (this.callbacks.onRangeChanged) this.callbacks.onRangeChanged();
         });
 
         this.bindHoverGuides(dataManager);
