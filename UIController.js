@@ -140,13 +140,23 @@ class UIController {
 
     async loadDefaultData() {
         try {
-            const res = await fetch('data.json');
+            const res = await fetch('example.json');
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             this.data.setData(data);
-            this.updateFileStatus('Источник: встроенный data.json');
+            this.updateFileStatus('Источник: встроенный example.json');
         } catch (e) {
-            this.updateFileStatus('Ошибка загрузки data.json', true);
+            console.error('Failed to load example.json:', e);
+            this.showEmptyState();
         }
+    }
+
+    showEmptyState() {
+        this.data.rawData = { groups: [], items: [], tags: [] };
+        this.applyFilter();
+        this.refreshUI();
+        this.resetDetails('Данные не загружены. Нажмите «Данные» → «Загрузить...», чтобы импортировать файл с событиями.');
+        this.updateFileStatus('Данные не найдены — загрузите файл вручную', true);
     }
 
     refreshUI() {

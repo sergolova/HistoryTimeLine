@@ -66,7 +66,7 @@ HistoryTimeLine/
 ├── WikipediaService.js     # Интеграция с API Википедии
 ├── poeticTitles.js         # Поэтические заголовки для шапки
 ├── styles.css              # Стили приложения
-├── data.json               # Данные по умолчанию
+├── example.json            # Пример данных по умолчанию
 ├── favicon.png             # Иконка сайта
 └── libs/
     └── vis-timeline-8.5.1/ # Библиотека vis-timeline (только dist)
