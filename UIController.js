@@ -127,7 +127,6 @@ class UIController {
         const cached = this.storage.loadFromStorage();
         if (cached) {
             this.data.setData(cached);
-            this.showToast('Источник: localStorage', 'info');
         } else {
             await this.loadDefaultData();
         }
@@ -143,7 +142,6 @@ class UIController {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             this.data.setData(data);
-            this.showToast('Источник: встроенный example.json', 'info');
         } catch (e) {
             console.error('Failed to load example.json:', e);
             this.showEmptyState();
