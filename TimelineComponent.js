@@ -69,9 +69,50 @@ class TimelineComponent {
         }
     }
 
+    saveTimelineState() {
+        if (!this.timeline) return null;
+        try {
+            const window = this.timeline.getWindow();
+            const scrollTop = this.timeline.getScrollTop ? this.timeline.getScrollTop() : 0;
+            return { start: window.start, end: window.end, scrollTop };
+        } catch (e) {
+            return null;
+        }
+    }
+
+    restoreTimelineState(state) {
+        if (!this.timeline || !state) return;
+        try {
+            this.timeline.setWindow(state.start, state.end, { animation: false });
+            if (this.timeline.setScrollTop) {
+                this.timeline.setScrollTop(state.scrollTop);
+            }
+        } catch (e) {
+            // ignore restore errors
+        }
+    }
+
     render(dataManager) {
         this.patchVisTimelineFocus();
 
+        if (!dataManager.rawData || !dataManager.rawData.groups) return;
+
+        const filtered = dataManager.getFilteredItems() || [];
+        const visibleGroups = dataManager.rawData.groups.filter(g => dataManager.activeGroups.has(g.id));
+
+        const timelineItems = filtered.map(item => this.toTimelineItem(item, dataManager));
+        const centuryBg = this.createCenturyBackgroundItems(filtered);
+
+        // Если таймлайн уже существует — обновляем только данные, сохраняя состояние
+        if (this.timeline) {
+            const state = this.saveTimelineState();
+            this.timeline.itemsData.update([...centuryBg, ...timelineItems]);
+            this.timeline.groupsData.update(visibleGroups);
+            this.restoreTimelineState(state);
+            return;
+        }
+
+        // Первое создание таймлайна
         if (this.timeline) {
             try {
                 this.timeline.destroy();
@@ -81,14 +122,6 @@ class TimelineComponent {
             this.timeline = null;
         }
         this.containerEl.innerHTML = '';
-
-        if (!dataManager.rawData || !dataManager.rawData.groups) return;
-
-        const filtered = dataManager.getFilteredItems() || [];
-        const visibleGroups = dataManager.rawData.groups.filter(g => dataManager.activeGroups.has(g.id));
-
-        const timelineItems = filtered.map(item => this.toTimelineItem(item, dataManager));
-        const centuryBg = this.createCenturyBackgroundItems(filtered);
 
         this.timeline = new vis.Timeline(
             this.containerEl,
