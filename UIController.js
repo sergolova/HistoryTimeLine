@@ -106,9 +106,8 @@ class UIController {
         document.getElementById('applyImportBtn').addEventListener('click', (e) => this.applyImportFromText(e));
         document.getElementById('closeImportDialogBtn').addEventListener('click', () => this.importDialogEl.close());
         document.getElementById('resetStorageBtn').addEventListener('click', async () => {
-            if (!window.confirm('Очистить localStorage и загрузить исходный data.json?')) return;
+            if (!window.confirm('Очистить localStorage и загрузить исходный example.json?')) return;
             this.storage.clearStorage();
-            this.data.setData(null);
             await this.loadDefaultData();
         });
 
