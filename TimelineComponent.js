@@ -106,8 +106,8 @@ class TimelineComponent {
         // Если таймлайн уже существует — обновляем только данные, сохраняя состояние
         if (this.timeline) {
             const state = this.saveTimelineState();
-            this.timeline.itemsData.update([...centuryBg, ...timelineItems]);
-            this.timeline.groupsData.update(visibleGroups);
+            this.timeline.setItems(new vis.DataSet([...centuryBg, ...timelineItems]));
+            this.timeline.setGroups(new vis.DataSet(visibleGroups));
             this.restoreTimelineState(state);
             return;
         }
