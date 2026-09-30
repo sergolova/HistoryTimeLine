@@ -82,7 +82,7 @@ class TimelineComponent {
         }
         this.containerEl.innerHTML = '';
 
-        if (!dataManager.rawData) return;
+        if (!dataManager.rawData || !dataManager.rawData.groups) return;
 
         const filtered = dataManager.getFilteredItems() || [];
         const visibleGroups = dataManager.rawData.groups.filter(g => dataManager.activeGroups.has(g.id));

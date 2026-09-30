@@ -934,3 +934,46 @@ body {
 .filter-checkbox {
     margin: 0;
 }
+
+/* === TOAST-УВЕДОМЛЕНИЯ === */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.toast {
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+    max-width: 400px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-info {
+    background: #2c5282;
+}
+
+.toast-error {
+    background: #c53030;
+}
+
+.toast-success {
+    background: #276749;
+}

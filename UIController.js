@@ -16,7 +16,6 @@ class UIController {
 
     bindDOM() {
         this.detailsEl = document.getElementById('details');
-        this.fileStatusEl = document.getElementById('fileStatus');
         this.tagsFilterEl = document.getElementById('tags');
         this.groupFiltersEl = document.getElementById('groupFilters');
         this.itemDialogEl = document.getElementById('itemDialog');
@@ -101,7 +100,7 @@ class UIController {
             const groups = this.data.rawData.groups.map(g => g.id).join(', ');
             e.preventDefault();
             navigator.clipboard.writeText(`// known groups: ${groups}\n${this.eventJsonExample || ''}`);
-            this.updateFileStatus('Пример JSON скопирован в буфер обмена');
+            this.showToast('Пример JSON скопирован в буфер обмена', 'info');
         });
         this.importFormEl.addEventListener('submit', (e) => this.applyImportFromText(e));
         document.getElementById('applyImportBtn').addEventListener('click', (e) => this.applyImportFromText(e));
@@ -128,7 +127,7 @@ class UIController {
         const cached = this.storage.loadFromStorage();
         if (cached) {
             this.data.setData(cached);
-            this.updateFileStatus('Источник: localStorage');
+            this.showToast('Источник: localStorage', 'info');
         } else {
             await this.loadDefaultData();
         }
@@ -144,7 +143,7 @@ class UIController {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             this.data.setData(data);
-            this.updateFileStatus('Источник: встроенный example.json');
+            this.showToast('Источник: встроенный example.json', 'info');
         } catch (e) {
             console.error('Failed to load example.json:', e);
             this.showEmptyState();
@@ -156,7 +155,7 @@ class UIController {
         this.applyFilter();
         this.refreshUI();
         this.resetDetails('Данные не загружены. Нажмите «Данные» → «Загрузить...», чтобы импортировать файл с событиями.');
-        this.updateFileStatus('Данные не найдены — загрузите файл вручную', true);
+        this.showToast('Данные не найдены — загрузите файл вручную', 'error');
     }
 
     refreshUI() {
@@ -235,7 +234,7 @@ class UIController {
 
         const items = this.getSearchTargets();
         if (!items.length) {
-            this.updateFileStatus('Совпадающие элементы не найдены', true);
+            this.showToast('Совпадающие элементы не найдены', 'error');
             this.updateFindButtonCount(0, 0);
             this.updateCurrentItemLabel('');
             return;
@@ -455,11 +454,29 @@ class UIController {
         this.detailsEl.textContent = message;
     }
 
-    updateFileStatus(message, isError = false) {
-        this.fileStatusEl.classList.remove('hidden');
-        this.fileStatusEl.textContent = message;
-        this.fileStatusEl.classList.toggle('error', isError);
-        setTimeout(() => this.fileStatusEl.classList.add('hidden'), 2000);
+    showToast(message, type = 'info') {
+        const container = document.getElementById('toastContainer') || this.createToastContainer();
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+        container.appendChild(toast);
+
+        // Анимация появления
+        requestAnimationFrame(() => toast.classList.add('show'));
+
+        // Автоматическое скрытие
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }
+
+    createToastContainer() {
+        const container = document.createElement('div');
+        container.id = 'toastContainer';
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+        return container;
     }
 
     escapeHtml(str) {
@@ -684,13 +701,13 @@ class UIController {
         const title = document.getElementById('groupTitleInput').value.trim();
 
         if (!id || !title) {
-            this.updateFileStatus('Заполните ID и название группы', true);
+            this.showToast('Заполните ID и название группы', 'error');
             return;
         }
 
         if (!this._editingGroupId) {
             if (this.data.rawData.groups.some(g => g.id === id)) {
-                this.updateFileStatus('Группа с таким ID уже существует', true);
+                this.showToast('Группа с таким ID уже существует', 'error');
                 return;
             }
             this.data.rawData.groups.push({id, content: title});
@@ -716,7 +733,7 @@ class UIController {
         this.groupDialogEl.close();
         this.applyFilter();
         this.renderGroupFilters();
-        this.updateFileStatus('Группа сохранена');
+        this.showToast('Группа сохранена', 'info');
     }
 
     deleteGroupFromDialog() {
@@ -731,7 +748,7 @@ class UIController {
         this.groupDialogEl.close();
         this.applyFilter();
         this.renderGroupFilters();
-        this.updateFileStatus('Группа удалена');
+        this.showToast('Группа удалена', 'info');
     }
 
     fillItemDialogSelects(excludeItemId = null) {
@@ -765,12 +782,12 @@ class UIController {
 
         if (mode === 'edit') {
             if (!this.data.selectedItemId) {
-                this.updateFileStatus('Сначала выберите событие для редактирования', true);
+                this.showToast('Сначала выберите событие для редактирования', 'error');
                 return;
             }
             const item = this.data.findItemById(this.data.selectedItemId);
             if (!item) {
-                this.updateFileStatus('Выбранное событие не найдено', true);
+                this.showToast('Выбранное событие не найдено', 'error');
                 return;
             }
             this.editOriginalId = item.id;
@@ -818,40 +835,40 @@ class UIController {
         const related = this.getMultipleSelectValues(document.getElementById('itemRelatedInput'));
 
         if (!itemId || !content || !startRaw || !group) {
-            this.updateFileStatus('Заполните обязательные поля события', true);
+            this.showToast('Заполните обязательные поля события', 'error');
             return;
         }
 
         const start = DateUtils.normalizeFlexibleDate(startRaw);
         if (!start) {
-            this.updateFileStatus('Неверная дата начала. Формат: Г (0..9999), Г-ММ или Г-ММ-ДД', true);
+            this.showToast('Неверная дата начала. Формат: Г (0..9999), Г-ММ или Г-ММ-ДД', 'error');
             return;
         }
 
         const end = endRaw.trim() ? DateUtils.normalizeFlexibleDate(endRaw) : '';
         if (endRaw.trim() && !end) {
-            this.updateFileStatus('Неверная дата конца. Формат: Г (0..9999), Г-ММ или Г-ММ-ДД', true);
+            this.showToast('Неверная дата конца. Формат: Г (0..9999), Г-ММ или Г-ММ-ДД', 'error');
             return;
         }
 
         if (!this.data.rawData.groups.some(g => g.id === group)) {
-            this.updateFileStatus('Выбрана несуществующая группа', true);
+            this.showToast('Выбрана несуществующая группа', 'error');
             return;
         }
 
         if (type === 'range' && !end) {
-            this.updateFileStatus('Для range укажите дату конца', true);
+            this.showToast('Для range укажите дату конца', 'error');
             return;
         }
 
         if (type === 'range' && DateUtils.compareDateStrings(start, end) > 0) {
-            this.updateFileStatus('Для range конец должен быть не раньше начала', true);
+            this.showToast('Для range конец должен быть не раньше начала', 'error');
             return;
         }
 
         const conflict = this.data.rawData.items.find(item => String(item.id) === String(itemId));
         if (conflict && (this.editMode === 'create' || String(this.editOriginalId) !== String(itemId))) {
-            this.updateFileStatus('Событие с таким ID уже существует', true);
+            this.showToast('Событие с таким ID уже существует', 'error');
             return;
         }
 
@@ -864,7 +881,7 @@ class UIController {
         } else {
             const index = this.data.rawData.items.findIndex(item => String(item.id) === String(this.editOriginalId));
             if (index === -1) {
-                this.updateFileStatus('Событие для редактирования не найдено', true);
+                this.showToast('Событие для редактирования не найдено', 'error');
                 return;
             }
             this.data.rawData.items[index] = nextItem;
@@ -887,7 +904,7 @@ class UIController {
 
     deleteSelectedItem() {
         if (!this.data.selectedItemId) {
-            this.updateFileStatus('Выберите событие для удаления', true);
+            this.showToast('Выберите событие для удаления', 'error');
             return;
         }
         if (!window.confirm('Удалить выбранное событие?')) return;
@@ -914,9 +931,9 @@ class UIController {
         }
 
         if (this.storage.saveToStorage(this.data.rawData)) {
-            this.updateFileStatus(`${message}. Данные сохранены в localStorage.`);
+            this.showToast(`${message}. Данные сохранены в localStorage.`, 'info');
         } else {
-            this.updateFileStatus(`${message}. Ошибка записи в localStorage.`, true);
+            this.showToast(`${message}. Ошибка записи в localStorage.`, 'error');
         }
     }
 
@@ -929,25 +946,42 @@ class UIController {
             const text = await file.text();
             const parsed = JSON.parse(text);
             const nextState = parsed && parsed.data && parsed.format ? parsed.data : parsed;
+
+            // Автоматически создаём группы из событий, если их нет в файле
+            if (!nextState.groups || !Array.isArray(nextState.groups)) {
+                nextState.groups = [];
+            }
+            const existingGroupIds = new Set(nextState.groups.map(g => g.id));
+            if (nextState.items && Array.isArray(nextState.items)) {
+                nextState.items.forEach(item => {
+                    const groupId = String(item.group || '').trim();
+                    if (groupId && !existingGroupIds.has(groupId)) {
+                        nextState.groups.push({ id: groupId, content: groupId });
+                        existingGroupIds.add(groupId);
+                    }
+                });
+            }
+
             this.data.setData(nextState);
             this.storage.saveToStorage(this.data.rawData);
-            this.updateFileStatus(`Состояние загружено из файла: ${file.name}`);
+            this.showToast(`Состояние загружено из файла: ${file.name}`, 'info');
             this.applyFilter();
+            this.refreshUI();
         } catch (error) {
-            this.updateFileStatus(`Ошибка импорта состояния: ${error.message}`, true);
+            this.showToast(`Ошибка импорта состояния: ${error.message}`, 'error');
         }
     }
 
     applyImportFromText(event) {
         event.preventDefault();
         if (!this.data.rawData) {
-            this.updateFileStatus('Сначала загрузите данные', true);
+            this.showToast('Сначала загрузите данные', 'error');
             return;
         }
 
         const sourceText = this.importTextInputEl.value.trim();
         if (!sourceText) {
-            this.updateFileStatus('Вставьте JSON для импорта', true);
+            this.showToast('Вставьте JSON для импорта', 'error');
             return;
         }
 
@@ -955,13 +989,13 @@ class UIController {
         try {
             parsed = JSON.parse(sourceText);
         } catch (error) {
-            this.updateFileStatus(`Ошибка JSON: ${error.message}`, true);
+            this.showToast(`Ошибка JSON: ${error.message}`, 'error');
             return;
         }
 
         const incoming = this.extractImportedItems(parsed);
         if (!incoming.length) {
-            this.updateFileStatus('Не найдено событий для импорта', true);
+            this.showToast('Не найдено событий для импорта', 'error');
             return;
         }
 
@@ -991,7 +1025,7 @@ class UIController {
         });
 
         if (!added && !updated) {
-            this.updateFileStatus('Импорт не выполнился: проверьте обязательные поля id/start', true);
+            this.showToast('Импорт не выполнился: проверьте обязательные поля id/start', 'error');
             return;
         }
 
