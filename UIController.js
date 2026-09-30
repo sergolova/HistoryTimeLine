@@ -256,22 +256,27 @@ class UIController {
         requestAnimationFrame(() => {
             const itemEl = this.timelineWrapEl.querySelector(`[data-item-id="${itemId}"]`)
                 || this.timelineWrapEl.querySelector(`.vis-item[data-id="${itemId}"]`);
-            if (!itemEl) return;
+            if (!itemEl) {
+                console.warn('Item not found for scroll:', itemId);
+                return;
+            }
 
-            // Ищем контейнер вертикальной прокрутки
-            const scrollContainer = this.timelineWrapEl.querySelector('.vis-vertical-scroll')
-                || this.timelineWrapEl.querySelector('.vis-panel.vis-center')
-                || this.timelineWrapEl.querySelector('.vis-panel');
+            // Получаем контейнер вертикальной прокрутки из внутренней структуры vis-timeline
+            const scrollContainer = this.timeline.timeline?.body?.dom?.verticalScroll
+                || this.timelineWrapEl.querySelector('.vis-vertical-scroll')
+                || this.timelineWrapEl.querySelector('.vis-panel.vis-center');
 
             if (scrollContainer) {
                 const itemRect = itemEl.getBoundingClientRect();
                 const containerRect = scrollContainer.getBoundingClientRect();
-                // Всегда прокручиваем к элементу, чтобы он был виден
                 const targetScrollTop = scrollContainer.scrollTop
                     + (itemRect.top - containerRect.top)
                     - (containerRect.height / 2)
                     + (itemRect.height / 2);
-                scrollContainer.scrollTo({top: targetScrollTop, behavior: 'smooth'});
+
+                // Устанавливаем scrollTop и вызываем событие scroll для vis-timeline
+                scrollContainer.scrollTop = targetScrollTop;
+                scrollContainer.dispatchEvent(new Event('scroll'));
             } else {
                 itemEl.scrollIntoView({behavior: 'smooth', block: 'center'});
             }
